@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import org.controlsfx.control.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="434.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="bLogo" disable="true" layoutX="595.0" layoutY="110.0" mnemonicParsing="false" onAction="#buscarLogo" prefHeight="25.0" prefWidth="25.0" styleClass="cfg-general-logo" />
+      <Button fx:id="bPlantilla" disable="true" layoutX="595.0" layoutY="81.0" mnemonicParsing="false" onAction="#buscarPlantilla" prefHeight="25.0" prefWidth="25.0" styleClass="cfg-general-plantilla" />
+      <ComboBox fx:id="impresora" disable="true" layoutX="149.0" layoutY="270.0" prefHeight="25.0" prefWidth="176.0" />
+      <TextField fx:id="numCopias" disable="true" layoutX="149.0" layoutY="243.0" prefHeight="25.0" prefWidth="30.0" />
+      <TextField fx:id="iva" disable="true" layoutX="150.0" layoutY="140.0" prefHeight="25.0" prefWidth="41.0" />
+      <TextField fx:id="logo" disable="true" editable="false" layoutX="150.0" layoutY="110.0" prefHeight="25.0" prefWidth="443.0" />
+      <TextField fx:id="plantilla" disable="true" editable="false" layoutX="149.0" layoutY="81.0" prefHeight="25.0" prefWidth="443.0" />
+      <Label layoutX="19.0" layoutY="275.0" text="Impresora" />
+      <Label layoutX="19.0" layoutY="247.0" text="Núm copias" />
+      <Label layoutX="14.0" layoutY="219.0" text="Imprimir" />
+      <Label layoutX="198.0" layoutY="144.0" text="\%" />
+      <Label layoutX="14.0" layoutY="144.0" text="IVA" />
+      <Label layoutX="14.0" layoutY="110.0" text="Logo" />
+      <Label layoutX="14.0" layoutY="85.0" text="Plantilla" />
+      <Label layoutX="14.0" layoutY="182.0" prefHeight="17.0" prefWidth="31.0" text="PDF" />
+      <Button fx:id="bCarpetaSalida" disable="true" layoutX="595.0" layoutY="52.0" mnemonicParsing="false" onAction="#buscarCarpetaSalida" prefHeight="25.0" prefWidth="25.0" styleClass="cfg-general-salida" />
+      <TextField fx:id="carpetaSalida" disable="true" editable="false" layoutX="149.0" layoutY="52.0" prefHeight="25.0" prefWidth="442.0" />
+      <Label layoutX="14.0" layoutY="56.0" prefHeight="17.0" prefWidth="100.0" text="Carpeta de salida" />
+      <Label layoutX="150.0" layoutY="21.0" text="CONFIGURACIÓN GENERAL" />
+      <Button fx:id="bEditar" defaultButton="true" layoutX="224.0" layoutY="355.0" mnemonicParsing="false" onAction="#editar" text="Editar" />
+      <Button fx:id="bGuardar" disable="true" layoutX="302.0" layoutY="355.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
+      <Button fx:id="bCancelar" disable="true" layoutX="385.0" layoutY="355.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+      <ToggleSwitch fx:id="tsPdf" disable="true" layoutX="63.0" layoutY="182.0" prefHeight="18.0" prefWidth="41.0" />
+      <ToggleSwitch fx:id="tsImprimir" disable="true" layoutX="63.0" layoutY="219.0" prefHeight="18.0" prefWidth="41.0" />
+   </children>
+</AnchorPane>

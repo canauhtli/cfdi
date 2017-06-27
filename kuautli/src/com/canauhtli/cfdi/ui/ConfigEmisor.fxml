@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Region layoutX="31.0" layoutY="182.0" prefHeight="257.0" prefWidth="653.0" styleClass="configuracion-direccion" />
+      <TextField fx:id="pais" disable="true" layoutX="158.0" layoutY="410.0" />
+      <TextField fx:id="estado" disable="true" layoutX="158.0" layoutY="381.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField fx:id="ciudad" disable="true" layoutX="158.0" layoutY="352.0" prefHeight="25.0" prefWidth="273.0" />
+      <TextField fx:id="cp" disable="true" layoutX="158.0" layoutY="324.0" prefHeight="25.0" prefWidth="100.0" />
+      <TextField fx:id="municipio" disable="true" layoutX="158.0" layoutY="295.0" prefHeight="25.0" prefWidth="420.0" />
+      <TextField fx:id="colonia" disable="true" layoutX="158.0" layoutY="266.0" prefHeight="25.0" prefWidth="420.0" />
+      <TextField fx:id="numInt" disable="true" layoutX="430.0" layoutY="237.0" prefHeight="25.0" prefWidth="100.0" />
+      <TextField fx:id="numExt" disable="true" layoutX="158.0" layoutY="237.0" prefHeight="25.0" prefWidth="100.0" />
+      <TextField fx:id="calle" disable="true" layoutX="158.0" layoutY="208.0" prefHeight="25.0" prefWidth="420.0" />
+      <TextField fx:id="registroPatronal" disable="true" layoutX="158.0" layoutY="102.0" prefHeight="25.0" prefWidth="278.0" />
+      <TextField fx:id="rfc" disable="true" layoutX="158.0" layoutY="73.0" prefHeight="25.0" prefWidth="111.0" />
+      <TextField fx:id="razonSocial" disable="true" layoutX="158.0" layoutY="43.0" prefHeight="25.0" prefWidth="503.0" />
+      <Label layoutX="45.0" layoutY="414.0" text="País" />
+      <Label layoutX="45.0" layoutY="385.0" text="Estado" />
+      <Label layoutX="45.0" layoutY="356.0" text="Ciudad" />
+      <Label layoutX="45.0" layoutY="328.0" text="C. P." />
+      <Label layoutX="45.0" layoutY="299.0" text="Municipio" />
+      <Label layoutX="45.0" layoutY="270.0" text="Colonia" />
+      <Label layoutX="342.0" layoutY="241.0" text="Núm Interior" />
+      <Label layoutX="45.0" layoutY="241.0" text="Núm Exterior" />
+      <Label layoutX="45.0" layoutY="212.0" text="Calle" />
+      <Label layoutX="40.0" layoutY="182.0" text="Dirección:" />
+      <Label layoutX="40.0" layoutY="106.0" text="Registro Patronal" />
+      <Label layoutX="40.0" layoutY="77.0" text="RFC" />
+      <Label layoutX="40.0" layoutY="47.0" text="Razón Social" />
+      <Button fx:id="bEditar" defaultButton="true" layoutX="242.0" layoutY="463.0" mnemonicParsing="false" onAction="#editar" text="Editar" />
+      <Button fx:id="bGuardar" disable="true" layoutX="316.0" layoutY="463.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
+      <Button fx:id="bCancelar" disable="true" layoutX="404.0" layoutY="463.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+      <Label layoutX="158.0" layoutY="14.0" text="DATOS FISCALES DEL PATRON" />
+      <Label layoutX="40.0" layoutY="137.0" text="Regimen Fiscal" />
+      <TextField fx:id="regimenFiscal" disable="true" layoutX="158.0" layoutY="133.0" prefHeight="25.0" prefWidth="278.0" />
+   </children>
+</AnchorPane>

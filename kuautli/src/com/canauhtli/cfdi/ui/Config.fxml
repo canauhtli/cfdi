@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="841.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TabPane layoutX="14.0" layoutY="28.0" prefHeight="442.0" prefWidth="808.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="General">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="413.0" prefWidth="808.0">
+                     <children>
+                        <Label layoutX="40.0" layoutY="55.0" prefHeight="17.0" prefWidth="100.0" text="Carpeta de salida" />
+                        <TextField layoutX="175.0" layoutY="51.0" prefHeight="25.0" prefWidth="442.0" />
+                        <Button layoutX="621.0" layoutY="51.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" />
+                        <Label layoutX="40.0" layoutY="111.0" prefHeight="17.0" prefWidth="31.0" text="PDF" />
+                        <CheckBox layoutX="71.0" layoutY="111.0" mnemonicParsing="false" />
+                        <Label layoutX="45.0" layoutY="139.0" text="Plantilla" />
+                        <Label layoutX="45.0" layoutY="166.0" text="Logo" />
+                        <Label layoutX="45.0" layoutY="193.0" text="IVA" />
+                        <Label layoutX="227.0" layoutY="193.0" text="\%" />
+                        <Label layoutX="45.0" layoutY="218.0" text="Imprimir" />
+                        <Label layoutX="45.0" layoutY="246.0" text="Núm copias" />
+                        <Label layoutX="45.0" layoutY="274.0" text="Impresora" />
+                        <CheckBox layoutX="95.0" layoutY="218.0" mnemonicParsing="false" />
+                        <TextField layoutX="175.0" layoutY="135.0" prefHeight="25.0" prefWidth="443.0" />
+                        <TextField layoutX="175.0" layoutY="162.0" prefHeight="25.0" prefWidth="443.0" />
+                        <TextField layoutX="175.0" layoutY="189.0" prefHeight="25.0" prefWidth="41.0" />
+                        <TextField layoutX="175.0" layoutY="242.0" prefHeight="25.0" prefWidth="30.0" />
+                        <ComboBox layoutX="175.0" layoutY="269.0" prefHeight="25.0" prefWidth="176.0" />
+                        <Button layoutX="621.0" layoutY="135.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" />
+                        <Button layoutX="621.0" layoutY="162.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Emisor">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="30.0" layoutY="37.0" text="Razón Social" />
+                        <Label layoutX="30.0" layoutY="67.0" text="RFC" />
+                        <Label layoutX="30.0" layoutY="96.0" text="Registro Patronal" />
+                        <Label layoutX="30.0" layoutY="126.0" text="Dirección:" />
+                        <Label layoutX="35.0" layoutY="156.0" text="Calle" />
+                        <Label layoutX="35.0" layoutY="185.0" text="Núm Exterior" />
+                        <Label layoutX="332.0" layoutY="185.0" text="Núm Interior" />
+                        <Label layoutX="35.0" layoutY="214.0" text="Colonia" />
+                        <Label layoutX="35.0" layoutY="243.0" text="Municipio" />
+                        <Label layoutX="35.0" layoutY="272.0" text="C. P." />
+                        <Label layoutX="35.0" layoutY="300.0" text="Ciudad" />
+                        <Label layoutX="35.0" layoutY="329.0" text="Estado" />
+                        <Label layoutX="35.0" layoutY="358.0" text="País" />
+                        <TextField layoutX="148.0" layoutY="33.0" prefHeight="25.0" prefWidth="503.0" />
+                        <TextField layoutX="148.0" layoutY="63.0" prefHeight="25.0" prefWidth="111.0" />
+                        <TextField layoutX="148.0" layoutY="92.0" prefHeight="25.0" prefWidth="278.0" />
+                        <TextField layoutX="148.0" layoutY="152.0" prefHeight="25.0" prefWidth="420.0" />
+                        <TextField layoutX="148.0" layoutY="181.0" prefHeight="25.0" prefWidth="100.0" />
+                        <TextField layoutX="420.0" layoutY="181.0" prefHeight="25.0" prefWidth="100.0" />
+                        <TextField layoutX="148.0" layoutY="210.0" prefHeight="25.0" prefWidth="420.0" />
+                        <TextField layoutX="148.0" layoutY="239.0" prefHeight="25.0" prefWidth="420.0" />
+                        <TextField layoutX="148.0" layoutY="268.0" prefHeight="25.0" prefWidth="100.0" />
+                        <TextField layoutX="148.0" layoutY="296.0" prefHeight="25.0" prefWidth="273.0" />
+                        <TextField layoutX="148.0" layoutY="325.0" prefHeight="25.0" prefWidth="275.0" />
+                        <TextField layoutX="148.0" layoutY="354.0" />
+                        <Region layoutX="21.0" layoutY="135.0" prefHeight="257.0" prefWidth="653.0" styleClass="configuracion-direccion" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="PAC">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="28.0" layoutY="41.0" prefHeight="17.0" prefWidth="146.0" text="Proveedor de CFDI (PAC)" />
+                        <ComboBox layoutX="192.0" layoutY="37.0" prefHeight="25.0" prefWidth="284.0" />
+                        <TableView layoutX="28.0" layoutY="75.0" prefHeight="317.0" prefWidth="735.0">
+                          <columns>
+                            <TableColumn prefWidth="174.0" text="Propiedad" />
+                            <TableColumn prefWidth="560.0" text="Valor" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Base de Datos">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="43.0" layoutY="51.0" text="Servidor" />
+                        <Label layoutX="43.0" layoutY="90.0" text="Nombre" />
+                        <Label layoutX="43.0" layoutY="130.0" text="Usuario" />
+                        <Label layoutX="43.0" layoutY="168.0" text="Contraseña" />
+                        <Label fx:id="bdMsg" layoutX="43.0" layoutY="259.0" prefHeight="17.0" prefWidth="702.0" />
+                        <TextField layoutX="139.0" layoutY="47.0" prefHeight="25.0" prefWidth="250.0" />
+                        <TextField layoutX="139.0" layoutY="86.0" prefHeight="25.0" prefWidth="250.0" />
+                        <TextField layoutX="139.0" layoutY="126.0" />
+                        <PasswordField layoutX="139.0" layoutY="164.0" />
+                        <Button layoutX="39.0" layoutY="207.0" mnemonicParsing="false" text="Probar..." />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Button layoutX="590.0" layoutY="483.0" mnemonicParsing="false" text="Guardar" />
+      <Button layoutX="669.0" layoutY="483.0" mnemonicParsing="false" text="Cancelar" />
+   </children>
+</AnchorPane>

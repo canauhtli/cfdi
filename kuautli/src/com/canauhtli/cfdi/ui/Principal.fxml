@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="891.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <bottom>
+      <Pane prefHeight="21.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="97.0" layoutY="2.0" text="Mensajes" />
+         </children>
+      </Pane>
+   </bottom>
+   <center>
+      <Pane id="contenido" fx:id="contenido" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <AnchorPane prefHeight="66.0" prefWidth="961.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar layoutY="39.0" prefHeight="3.0" prefWidth="750.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+              <menus>
+                <Menu fx:id="mNomina" mnemonicParsing="false" text="Nomina">
+                  <items>
+                        <MenuItem fx:id="mPeriodos" mnemonicParsing="false" onAction="#cambiaContenido" text="Periodos" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                    <MenuItem fx:id="mSalir" mnemonicParsing="false" onAction="#salir" text="Salir" />
+                  </items>
+                </Menu>
+                <Menu fx:id="mConfiguracion" mnemonicParsing="false" text="Configuración">
+                  <items>
+                        <MenuItem fx:id="mEmisor" mnemonicParsing="false" onAction="#cambiaContenido" text="Emisor" />
+                    <MenuItem fx:id="mGeneral" mnemonicParsing="false" onAction="#cambiaContenido" text="General" />
+                        <MenuItem fx:id="mCorreo" mnemonicParsing="false" onAction="#cambiaContenido" text="Correo" />
+                        <MenuItem fx:id="mProveedor" mnemonicParsing="false" onAction="#cambiaContenido" text="Proveedor" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="mBD" mnemonicParsing="false" onAction="#cambiaContenido" text="Base de Datos" />
+                  </items>
+                </Menu>
+                <Menu fx:id="mAyuda" mnemonicParsing="false" text="Ayuda">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Acerca de..." />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <HBox alignment="TOP_CENTER" layoutX="278.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <SVGPath fx:id="windowDrag" content="M0,0 L10,10 L480,10 L490,0 Z" layoutX="278.0" AnchorPane.topAnchor="0.0">
+                     <fill>
+                        <LinearGradient endY="1.0">
+                           <stops>
+                              <Stop color="#252936" />
+                              <Stop color="#98b0c3" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </SVGPath>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>

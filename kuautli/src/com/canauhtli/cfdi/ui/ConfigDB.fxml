@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="msg" layoutX="123.0" layoutY="220.0" prefHeight="17.0" prefWidth="434.0" />
+      <Button fx:id="bProbar" disable="true" layoutX="25.0" layoutY="216.0" mnemonicParsing="false" onAction="#probarConexion" text="Probar..." />
+      <PasswordField fx:id="pwd" disable="true" layoutX="123.0" layoutY="165.0" />
+      <Label focusTraversable="false" layoutX="25.0" layoutY="169.0" text="Contraseña:" />
+      <TextField fx:id="usr" disable="true" layoutX="123.0" layoutY="131.0" />
+      <Label focusTraversable="false" layoutX="25.0" layoutY="135.0" text="Usuario:" />
+      <TextField fx:id="dbname" disable="true" layoutX="123.0" layoutY="95.0" />
+      <Label focusTraversable="false" layoutX="25.0" layoutY="99.0" text="Nombre: " />
+      <TextField fx:id="server" disable="true" layoutX="123.0" layoutY="60.0" prefHeight="25.0" prefWidth="178.0" />
+      <Label focusTraversable="false" layoutX="25.0" layoutY="64.0" text="Servidor:" />
+      <Label focusTraversable="false" layoutX="25.0" layoutY="33.0" text="CONEXIÓN A SERVIDOR DE BASE DE DATOS" />
+      <Button fx:id="bEditar" layoutX="172.0" layoutY="293.0" mnemonicParsing="false" onAction="#editar" text="Editar" />
+      <Button fx:id="bGuardar" disable="true" layoutX="262.0" layoutY="293.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
+      <Button fx:id="bCancelar" disable="true" layoutX="351.0" layoutY="293.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+   </children>
+</AnchorPane>

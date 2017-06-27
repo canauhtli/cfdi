@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="473.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView fx:id="tvPacProps" disable="true" editable="true" layoutX="30.0" layoutY="69.0" prefHeight="317.0" prefWidth="735.0">
+         <columns>
+            <TableColumn fx:id="tcPropiedad" editable="false" prefWidth="174.0" text="Propiedad" />
+            <TableColumn fx:id="tcValor" onEditCancel="#cancelarValor" onEditCommit="#editarValor" prefWidth="560.0" text="Valor" />
+         </columns>
+      </TableView>
+      <ComboBox fx:id="pac" disable="true" layoutX="194.0" layoutY="31.0" onAction="#cambiaPac" prefHeight="25.0" prefWidth="284.0" />
+      <Label layoutX="30.0" layoutY="35.0" prefHeight="17.0" prefWidth="146.0" text="Proveedor de CFDI (PAC)" />
+      <Button fx:id="bEditar" defaultButton="true" layoutX="264.0" layoutY="411.0" mnemonicParsing="false" onAction="#editar" text="Editar" />
+      <Button fx:id="bGuardar" disable="true" layoutX="346.0" layoutY="411.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
+      <Button fx:id="bCancelar" disable="true" layoutX="426.0" layoutY="411.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+   </children>
+</AnchorPane>

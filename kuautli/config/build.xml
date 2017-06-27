@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="kuautli" basedir="..">
+	<property name="src" value="./src" />
+	<property name="lib" value="./lib" />
+	<property name="bin" value="./bin" />
+	<property name="xsd" value="./xsd" />
+	<property name="dist" value="./dist" />
+
+	<path id="jaxb.classpath">
+		<fileset dir="${lib}">
+			<include name="**/jaxb-xjc.jar" />
+			<include name="**/jaxb-impl.jar" />
+			<include name="**/jaxb-core.jar" />
+		</fileset>
+	</path>
+	
+	<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+	  <classpath refid="jaxb.classpath" />
+	</taskdef>
+	
+	<target name="cfdv32">
+		<xjc
+			schema="${xsd}/cfdv32.xsd"
+			destdir="${src}"
+			package="com.canauhtli.cfdi.sat"
+		/>
+	</target>
+	
+	<target name="timbre">
+		<xjc
+			schema="${xsd}/TimbreFiscalDigital.xsd"
+			destdir="${src}"
+			package="com.canauhtli.cfdi.sat.timbre"
+		/>
+	</target>
+	
+	<target name="cfd">
+		<xjc
+			schema="${xsd}/cfd.xsd"
+			destdir="${src}"
+			package="com.canauhtli.cfdi.reportes.xmlds"
+		/>
+	</target>
+	
+	<path id="build-classpath">
+    	<fileset dir="${dist}/lib">
+        	<include name="*.jar"/>
+    	</fileset>
+	</path>
+	<manifestclasspath property="lib.list" jarfile="${dist}/cfdiNomina.jar">
+    	<classpath refid="build-classpath"/>
+	</manifestclasspath>
+	<target name="deploy">
+		<jar destfile="${dist}/cfdiNomina.jar"
+			basedir="${bin}"
+			excludes="**/logback.xml">
+			
+			<manifest>
+				<attribute name="Main-Class" value="com.canauhtli.cfdi.CfdiNomina"/>
+				<attribute name="Class-Path" value=". ${lib.list}"/>
+			</manifest>
+		</jar>
+		
+	</target>
+	
+</project>
+
