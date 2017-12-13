@@ -4,7 +4,7 @@ import org.beanio.annotation.Field;
 import org.beanio.annotation.Fields;
 import org.beanio.annotation.Record;
 
-@Record(minOccurs=0)
+@Record(minOccurs=1)
 @Fields({
     @Field(name="receptor", at=0, rid=true, literal="R")
 })
