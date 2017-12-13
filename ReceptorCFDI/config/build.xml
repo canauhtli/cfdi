@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ReceptorCFDI" basedir="./..">
+	<property name="src" value="./src" />
+	<property name="lib" value="./lib" />
+	<property name="bin" value="./bin" />
+	<property name="dist" value="./dist" />
+	<property name="xsd" value="./xsd" />
+	
+
+	<path id="jaxb.classpath">
+		<fileset dir="${lib}">
+			<include name="**/jaxb-xjc.jar" />
+			<include name="**/jaxb-impl.jar" />
+			<include name="**/jaxb-core.jar" />
+		</fileset>
+	</path>
+	
+	<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+	  <classpath refid="jaxb.classpath" />
+	</taskdef>
+		
+	<target name="cfdv33">
+	    <xjc
+	        schema="${xsd}/cfdv33.xsd"
+	        destdir="${src}"
+	        package="com.canauhtli.cfdi.sat.cfd33"
+	    />
+	</target>
+	
+	<target name="timbre11">
+		<xjc
+			schema="${xsd}/TimbreFiscalDigitalv11.xsd"
+			destdir="${src}"
+			package="com.canauhtli.cfdi.sat.timbre11"
+		/>
+	</target>
+	
+	<path id="build-classpath">
+    	<fileset dir="${dist}/lib">
+        	<include name="*.jar"/>
+    	</fileset>
+	</path>
+	<manifestclasspath property="lib.list" jarfile="${dist}/receptorCFDI.jar">
+    	<classpath refid="build-classpath"/>
+	</manifestclasspath>
+	<target name="deploy">
+		<jar destfile="${dist}/receptorCFDI.jar"
+			basedir="${bin}"
+			excludes="**/logback.xml, configuracion/config.properties">
+			
+			<manifest>
+				<attribute name="Main-Class" value="com.canauhtli.cfdi.Receptor"/>
+				<attribute name="Class-Path" value=". ${lib.list}"/>
+			</manifest>
+		</jar>
+		
+	</target>
+	
+</project>
+
