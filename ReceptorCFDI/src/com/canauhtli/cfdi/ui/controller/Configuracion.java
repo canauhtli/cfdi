@@ -5,8 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.controlsfx.control.Notifications;
-import org.controlsfx.control.decoration.Decorator;
-import org.controlsfx.control.decoration.StyleClassDecoration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,6 +40,7 @@ public class Configuracion extends AnchorPane implements Initializable {
 	@FXML private Button btCancelar;
 	
 	private RecibidasDAO dao = RecibidasDAO.getInstance();
+	private String decoration = "decoration-warning";
 	
 	@FXML
 	private void editar(ActionEvent event) {
@@ -128,35 +127,33 @@ public class Configuracion extends AnchorPane implements Initializable {
 		boolean valida = true;
 		removeDecorations();
 		
-		StyleClassDecoration decoration = new StyleClassDecoration("decoration-warning");
-		
 		if ("".equals(tfEntrada.getText().trim())) {
-			Decorator.addDecoration(tfEntrada, decoration);
+			tfEntrada.getStyleClass().add(decoration);
 			valida = false;
 		}
 		
 		if ("".equals(tfProcesadas.getText().trim())) {
-			Decorator.addDecoration(tfProcesadas, decoration);
+			tfProcesadas.getStyleClass().add(decoration);
 			valida = false;
 		}
 		
 		if ("".equals(tfServidor.getText().trim())) {
-			Decorator.addDecoration(tfServidor, decoration);
+			tfServidor.getStyleClass().add(decoration);
 			valida = false;
 		}
 		
 		if ("".equals(tfNombre.getText().trim())) {
-			Decorator.addDecoration(tfNombre, decoration);
+			tfNombre.getStyleClass().add(decoration);
 			valida = false;
 		}
 		
 		if ("".equals(tfUsuario.getText().trim())) {
-			Decorator.addDecoration(tfUsuario, decoration);
+			tfUsuario.getStyleClass().add(decoration);
 			valida = false;
 		}
 		
 		if ("".equals(pfPassword.getText().trim())) {
-			Decorator.addDecoration(pfPassword, decoration);
+			pfPassword.getStyleClass().add(decoration);
 			valida = false;
 		}
 		
@@ -164,12 +161,12 @@ public class Configuracion extends AnchorPane implements Initializable {
 	}
 	
 	private void removeDecorations() {
-		Decorator.removeAllDecorations(tfEntrada);
-		Decorator.removeAllDecorations(tfProcesadas);
-		Decorator.removeAllDecorations(tfServidor);
-		Decorator.removeAllDecorations(tfNombre);
-		Decorator.removeAllDecorations(tfUsuario);
-		Decorator.removeAllDecorations(pfPassword);
+		tfEntrada.getStyleClass().remove(decoration);
+		tfProcesadas.getStyleClass().remove(decoration);
+		tfServidor.getStyleClass().remove(decoration);
+		tfNombre.getStyleClass().remove(decoration);
+		tfUsuario.getStyleClass().remove(decoration);
+		pfPassword.getStyleClass().remove(decoration);
 	}
 
 	@Override
