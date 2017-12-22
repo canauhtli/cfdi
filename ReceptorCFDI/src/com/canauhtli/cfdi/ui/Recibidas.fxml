@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="471.0" prefWidth="1052.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="Facturas recibidas" />
+      <SplitPane fx:id="spRecibidas" cacheShape="false" dividerPositions="0.2106280193236715" layoutX="9.0" layoutY="41.0" prefHeight="416.0" prefWidth="1037.0">
+        <items>
+          <AnchorPane fx:id="apIzq" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ToolBar fx:id="tbAcciones" layoutX="2.0" layoutY="-1.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="37.0" prefWidth="205.0">
+                    <items>
+                      <Button fx:id="btRefresh" mnemonicParsing="false" onAction="#recargaArchivos" prefHeight="20.0" prefWidth="20.0" styleClass="facturas-button-refresh" />
+                        <DatePicker fx:id="dpFecha" editable="false" onAction="#cargarHistorico" prefWidth="120.0" promptText="Fecha" />
+                    </items>
+                  </ToolBar>
+                  <ListView fx:id="lvFacturas" layoutX="2.0" layoutY="37.0" onMouseClicked="#mostrarFactura" prefHeight="376.0" prefWidth="210.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="414.0" prefWidth="816.0">
+               <children>
+                  <Label layoutX="8.0" layoutY="14.0" text="Archivo:" />
+                  <Label layoutX="8.0" layoutY="47.0" prefHeight="15.0" prefWidth="54.0" text="Serie:" />
+                  <Label layoutX="170.0" layoutY="47.0" text="Folio:" />
+                  <Label layoutX="335.0" layoutY="47.0" text="Fecha:" />
+                  <Label layoutX="8.0" layoutY="78.0" text="UUID:" />
+                  <Label layoutX="333.0" layoutY="78.0" text="Pedido:" />
+                  <TextField fx:id="tfArchivo" disable="true" editable="false" layoutX="65.0" layoutY="9.0" prefHeight="25.0" prefWidth="634.0" />
+                  <TextField fx:id="tfSerie" disable="true" editable="false" layoutX="65.0" layoutY="42.0" prefHeight="25.0" prefWidth="86.0" />
+                  <TextField fx:id="tfFolio" disable="true" editable="false" layoutX="219.0" layoutY="42.0" prefHeight="25.0" prefWidth="86.0" />
+                  <TextField fx:id="tfFecha" disable="true" editable="false" layoutX="390.0" layoutY="42.0" />
+                  <TextField fx:id="tfUuid" disable="true" editable="false" layoutX="66.0" layoutY="73.0" prefHeight="25.0" prefWidth="240.0" />
+                  <TextField fx:id="tfPedido" layoutX="390.0" layoutY="73.0" />
+                  <Button fx:id="btGuardar" layoutX="572.0" layoutY="70.0" mnemonicParsing="false" onAction="#guardar" text="guardar">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../resources/img/Guardar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <TableView fx:id="tvConceptos" layoutX="8.0" layoutY="114.0" prefHeight="297.0" prefWidth="796.0">
+                    <columns>
+                      <TableColumn fx:id="tcCveSat" prefWidth="81.0" text="Clave SAT" />
+                      <TableColumn fx:id="tcCodigo" prefWidth="69.0" text="Código" />
+                        <TableColumn fx:id="tcCantidad" prefWidth="75.0" text="Cantidad" />
+                        <TableColumn fx:id="tcCveUnidad" prefWidth="101.0" text="Cve Unidad" />
+                        <TableColumn fx:id="tcUnidad" prefWidth="74.0" text="Unidad" />
+                        <TableColumn fx:id="tcDescripcion" prefWidth="274.0" text="Descripción" />
+                        <TableColumn fx:id="tcPrecio" prefWidth="121.0" text="Precio Unitario" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

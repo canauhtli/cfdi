@@ -13,11 +13,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CFDI_FACTURA_RECIBIDA")
+@Table(name="CFDI_Factura_Recibida")
 @NamedQueries({
 	@NamedQuery(name="Factura.findAll", query="SELECT f FROM Factura f"),
 	@NamedQuery(name="Factura.findByUUID", query="SELECT f FROM Factura f WHERE f.uuid = :uuid"),
-	@NamedQuery(name="Factura.findByPedido", query="SELECT f FROM Factura f WHERE f.numeroPedido = :pedido")
+	@NamedQuery(name="Factura.findByPedido", query="SELECT f FROM Factura f WHERE f.numeroPedido = :pedido"),
+	@NamedQuery(name="Factura.findByFecha", query="SELECT f FROM Factura f WHERE f.fecha >= :fini AND f.fecha <= :ffin"),
+	@NamedQuery(name="Factura.findPendientes", query="SELECT f FROM Factura f WHERE f.numeroPedido IS NULL")
 })
 public class Factura {
 
@@ -177,4 +179,13 @@ public class Factura {
 		this.uuid = uuid;
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		if ((numeroPedido == null) || ("".equals(numeroPedido))) {
+			sb.append(serie).append(":").append(folio);
+		} else {
+			sb.append("NP: ").append(numeroPedido);
+		}
+		return sb.toString();
+	}
 }

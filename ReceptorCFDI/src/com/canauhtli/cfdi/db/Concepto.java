@@ -12,7 +12,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CFDI_CONCEPTO_RECIBIDA")
+@Table(name="CFDI_Concepto_Recibida")
 @NamedQueries({
 	@NamedQuery(name="Concepto.findAll", query="SELECT c FROM Concepto c"),
 	@NamedQuery(name="Factura.findByFactura", query="SELECT c FROM Concepto c WHERE c.idFactura = :factura")
@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class Concepto {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY) 
 	@Column(name="ID_CONCEPTO_RECIBIDA")
 	private long idConcepto;
 	

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="ReceptorCFDI" basedir="./..">
+<project name="ReceptorCFDI" basedir="./.." xmlns:fx="javafx:com.sun.javafx.tools.ant">
 	<property name="src" value="./src" />
 	<property name="lib" value="./lib" />
 	<property name="bin" value="./bin" />
 	<property name="dist" value="./dist" />
 	<property name="xsd" value="./xsd" />
+	<property name="javafx.sdk.path" value="/usr/java/jdk1.8.0_152" />
 	
 
 	<path id="jaxb.classpath">
@@ -14,6 +15,7 @@
 			<include name="**/jaxb-core.jar" />
 		</fileset>
 	</path>
+	
 	
 	<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
 	  <classpath refid="jaxb.classpath" />
@@ -55,6 +57,45 @@
 		</jar>
 		
 	</target>
+	
+	<taskdef resource="com/sun/javafx/tools/ant/antlib.xml"      
+	        uri="javafx:com.sun.javafx.tools.ant"
+	        classpath="${javafx.sdk.path}/lib/ant-javafx.jar"/>
+	
+	<target name="deployFX">
+		
+		<fx:application id="receptorApp"
+			name="Receptor de facturas"
+		    mainClass="com.canauhtli.cfdi.ui.Receptor"
+		    />
+		 
+		<fx:resources id="resourcesApp">
+			<fx:fileset dir="${dist}" includes="lib/*.jar" />
+		</fx:resources>
+		
+		<fx:csstobin outdir="${bin}">
+		    <fileset dir="${bin}" includes="**/*.css"/>
+		</fx:csstobin>
+
+		
+		<fx:jar destfile="dist/Receptor.jar">
+			
+			<fx:application refid="receptorApp"/>
+			<fx:resources refid="resourcesApp"/>
+			
+			<fileset dir="${bin}" />
+
+			<manifest>
+				<attribute name="Implementation-Vendor" value="Canauhtli"/>
+				<attribute name="Implementation-Title" value="ReceptorFacturas"/>
+				<attribute name="Implementation-Version" value="1.0"/>
+				<attribute name="JavaFX-Feature-Proxy" value="None"/>
+			</manifest>
+			
+		</fx:jar>
+	</target>
+	
+	 
 	
 </project>
 

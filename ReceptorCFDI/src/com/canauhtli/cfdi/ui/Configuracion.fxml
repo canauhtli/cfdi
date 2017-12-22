@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="487.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="14.0" layoutY="161.0" prefHeight="208.0" prefWidth="418.0">
+         <children>
+            <PasswordField fx:id="pfPassword" editable="false" layoutX="163.0" layoutY="164.0" />
+            <Label layoutX="33.0" layoutY="122.0" text="Usuario" />
+            <Label layoutX="33.0" layoutY="80.0" text="Nombre" />
+            <TextField fx:id="tfNombre" editable="false" layoutX="163.0" layoutY="75.0" />
+            <TextField fx:id="tfServidor" editable="false" layoutX="163.0" layoutY="37.0" />
+            <TextField fx:id="tfUsuario" editable="false" layoutX="163.0" layoutY="117.0" />
+            <Label layoutX="33.0" layoutY="42.0" prefHeight="15.0" prefWidth="122.0" text="Servidor y puerto" />
+            <Label layoutX="33.0" layoutY="169.0" text="Contraseña" />
+            <Label layoutX="6.0" layoutY="7.0" text="Configuración Base de Datos" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="54.0" layoutY="369.0" prefHeight="63.0" prefWidth="398.0">
+         <children>
+            <Button fx:id="btGuardar" disable="true" layoutX="194.0" layoutY="18.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
+            <Button fx:id="btCancelar" disable="true" layoutX="284.0" layoutY="18.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+            <Button fx:id="btEditar" layoutX="26.0" layoutY="18.0" mnemonicParsing="false" onAction="#editar" text="Editar" />
+            <Button fx:id="btConectar" disable="true" layoutX="99.0" layoutY="18.0" mnemonicParsing="false" onAction="#conectar" text="Conectar" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="138.0" prefWidth="506.0">
+         <children>
+            <Label layoutX="6.0" layoutY="7.0" text="Carpetas de archivos" />
+            <Label layoutX="31.0" layoutY="37.0" text="Entrada" />
+            <Label layoutX="31.0" layoutY="84.0" text="Procesadas" />
+            <TextField fx:id="tfEntrada" editable="false" layoutX="122.0" layoutY="32.0" prefHeight="25.0" prefWidth="334.0" />
+            <TextField fx:id="tfProcesadas" editable="false" layoutX="122.0" layoutY="79.0" prefHeight="25.0" prefWidth="334.0" />
+            <Button fx:id="btEntrada" disable="true" layoutX="461.0" layoutY="32.0" mnemonicParsing="false" onAction="#seleccionaEntrada" prefHeight="25.0" prefWidth="37.0" styleClass="recibidas-button-folder" />
+            <Button fx:id="btProcesadas" disable="true" layoutX="461.0" layoutY="79.0" mnemonicParsing="false" onAction="#seleccionaProcesadas" prefHeight="25.0" prefWidth="37.0" styleClass="recibidas-button-folder" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
