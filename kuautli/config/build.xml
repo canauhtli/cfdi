@@ -26,11 +26,27 @@
 		/>
 	</target>
 	
+	<target name="cfdv33">
+	    <xjc
+	        schema="${xsd}/cfdv33.xsd"
+	        destdir="${src}"
+	        package="com.canauhtli.cfdi.sat.cfd33"
+	    />
+	</target>
+	
 	<target name="timbre">
 		<xjc
 			schema="${xsd}/TimbreFiscalDigital.xsd"
 			destdir="${src}"
 			package="com.canauhtli.cfdi.sat.timbre"
+		/>
+	</target>
+	
+	<target name="timbre11">
+		<xjc
+			schema="${xsd}/TimbreFiscalDigitalv11.xsd"
+			destdir="${src}"
+			package="com.canauhtli.cfdi.sat.timbre11"
 		/>
 	</target>
 	
@@ -47,16 +63,16 @@
         	<include name="*.jar"/>
     	</fileset>
 	</path>
-	<manifestclasspath property="lib.list" jarfile="${dist}/cfdiNomina.jar">
+	<manifestclasspath property="lib.list" jarfile="${dist}/cfdiFactura.jar">
     	<classpath refid="build-classpath"/>
 	</manifestclasspath>
 	<target name="deploy">
-		<jar destfile="${dist}/cfdiNomina.jar"
+		<jar destfile="${dist}/cfdiFactura.jar"
 			basedir="${bin}"
 			excludes="**/logback.xml">
 			
 			<manifest>
-				<attribute name="Main-Class" value="com.canauhtli.cfdi.CfdiNomina"/>
+				<attribute name="Main-Class" value="com.canauhtli.cfdi.CfdiFactura"/>
 				<attribute name="Class-Path" value=". ${lib.list}"/>
 			</manifest>
 		</jar>
