@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="543.0" prefWidth="841.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <RadioButton fx:id="rbCodigo" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" selected="true" text="Código">
+         <toggleGroup>
+            <ToggleGroup fx:id="filtro" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="rbUuid" layoutX="14.0" layoutY="51.0" mnemonicParsing="false" text="UUID" toggleGroup="$filtro" />
+      <RadioButton fx:id="rbFecha" layoutX="14.0" layoutY="86.0" mnemonicParsing="false" text="Fecha" toggleGroup="$filtro" />
+      <TextField fx:id="tCodigo" layoutX="91.0" layoutY="14.0" />
+      <TextField fx:id="tUuid" layoutX="91.0" layoutY="47.0" prefHeight="25.0" prefWidth="288.0" />
+      <DatePicker fx:id="dFecha" layoutX="91.0" layoutY="82.0" />
+      <Button fx:id="bBusacar" layoutX="579.0" layoutY="82.0" mnemonicParsing="false" onAction="#buscaFacturas" prefHeight="25.0" prefWidth="27.0" styleClass="lperiodo-button-buscar" />
+      <TableView fx:id="tvFacturas" layoutX="14.0" layoutY="131.0" prefHeight="374.0" prefWidth="816.0">
+        <columns>
+          <TableColumn fx:id="codigoCol" prefWidth="75.0" text="Código" />
+          <TableColumn fx:id="rfcCol" prefWidth="147.0" text="RFC Cliente" />
+            <TableColumn fx:id="statusCol" prefWidth="92.0" text="ST" />
+            <TableColumn fx:id="cfdiCol" prefWidth="224.0" text="CFDI" />
+            <TableColumn fx:id="pdfCol" prefWidth="66.0" text="PDF" />
+            <TableColumn fx:id="correoCol" prefWidth="210.0" text="Correo" />
+        </columns>
+      </TableView>
+      <RadioButton fx:id="rbCliente" layoutX="406.0" layoutY="18.0" mnemonicParsing="false" text="Cliente" toggleGroup="$filtro" />
+      <TextField fx:id="tCliente" layoutX="472.0" layoutY="14.0" />
+   </children>
+</AnchorPane>
