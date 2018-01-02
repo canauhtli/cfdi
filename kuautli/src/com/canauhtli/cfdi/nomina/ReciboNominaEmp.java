@@ -2,8 +2,8 @@ package com.canauhtli.cfdi.nomina;
 
 import java.util.ArrayList;
 
-import com.canauhtli.cfdi.sat.Comprobante;
-import com.canauhtli.cfdi.sat.timbre.TimbreFiscalDigital;
+import com.canauhtli.cfdi.sat.cfd33.Comprobante;
+import com.canauhtli.cfdi.sat.timbre11.TimbreFiscalDigital;
 import com.canauhtli.cfdi.tipo.Estatus;
 
 public class ReciboNominaEmp {

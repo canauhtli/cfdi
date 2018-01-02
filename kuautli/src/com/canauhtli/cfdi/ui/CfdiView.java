@@ -21,7 +21,7 @@ public class CfdiView extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		stage.setTitle("Monitor de CFDI Nómina");
+		stage.setTitle("Monitor de CFDI");
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Principal.fxml"));
 		PrincipalController principalController = new PrincipalController(dbm, cm);

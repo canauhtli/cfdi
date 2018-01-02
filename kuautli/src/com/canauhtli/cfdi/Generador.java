@@ -54,8 +54,9 @@ import com.canauhtli.cfdi.pac.types.Estado;
 import com.canauhtli.cfdi.pac.types.TipoCFD;
 import com.canauhtli.cfdi.pac.types.TipoDeduccion;
 import com.canauhtli.cfdi.pac.types.TipoPercepcion;
-import com.canauhtli.cfdi.sat.Comprobante;
-import com.canauhtli.cfdi.sat.timbre.TimbreFiscalDigital;
+import com.canauhtli.cfdi.sat.cfd33.Comprobante;
+import com.canauhtli.cfdi.sat.cfd33.Comprobante.Complemento;
+import com.canauhtli.cfdi.sat.timbre11.TimbreFiscalDigital;
 import com.canauhtli.cfdi.tipo.Estatus;
 import com.canauhtli.utils.Bandera;
 import com.canauhtli.utils.XMLParser;
@@ -222,12 +223,14 @@ public class Generador {
 						 rn.setEstatus(Estatus.EMITIDO);
 						 Comprobante cfdi = XMLParser.parseCfdi(xml);
 						 rn.setCfdi(cfdi);
-						 for (Object cp : cfdi.getComplemento().getAny()) {
-							 Node compl = (Node) cp;
-							 if ("TimbreFiscalDigital".equalsIgnoreCase(compl.getLocalName())) {
-								 TimbreFiscalDigital timbre = XMLParser.parseTimbreFiscal(compl);
-								 recibo.setUuid(timbre.getUUID());
-								 rn.setTimbre(timbre);
+						 for (Complemento cp : cfdi.getComplemento()) {
+							 for (Object any : cp.getAny()) {
+								 Node compl = (Node) any;
+								 if ("TimbreFiscalDigital".equalsIgnoreCase(compl.getLocalName())) {
+									 TimbreFiscalDigital timbre = XMLParser.parseTimbreFiscal(compl);
+									 recibo.setUuid(timbre.getUUID());
+									 rn.setTimbre(timbre);
+								 }
 							 }
 						 }
 						 madb.actualizaReciboNomina(recibo);

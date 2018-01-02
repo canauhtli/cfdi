@@ -25,12 +25,15 @@ public class PrincipalController extends BorderPane implements Initializable {
 
 	private static Logger log = LoggerFactory.getLogger(PrincipalController.class);
 	
-	// Menu Nomina
+	// Menu Monitor
 	@FXML
-	private Menu mNomina;
+	private Menu mMonitor;
 	
 	@FXML
 	private MenuItem mPeriodos;
+	
+	@FXML
+	private MenuItem mFacturas;
 	
 	@FXML
 	private MenuItem mSalir;
@@ -65,6 +68,7 @@ public class PrincipalController extends BorderPane implements Initializable {
 	private Pane contenido;
 	
 	private AnchorPane listadoPeriodo;
+	private AnchorPane listadoFacturas;
 	private AnchorPane configEmisor;
 	private AnchorPane configGeneral;
 	private AnchorPane configMail;
@@ -73,6 +77,7 @@ public class PrincipalController extends BorderPane implements Initializable {
 	private AnchorPane configDB;
 	
 	private ListadoPeriodoController lpc;
+	private FacturasController fc;
 	private ConfigEmisorController cec;
 	private ConfigGeneralController cgc;
 	private ConfigMailController cmc;
@@ -86,6 +91,7 @@ public class PrincipalController extends BorderPane implements Initializable {
 		this.dbm = dbm;
 		this.cm = cm;
 		lpc = new ListadoPeriodoController(dbm);
+		fc = new FacturasController(dbm);
 		cec = new ConfigEmisorController(cm);
 		cgc = new ConfigGeneralController(cm);
 		cmc = new ConfigMailController(cm);
@@ -104,6 +110,11 @@ public class PrincipalController extends BorderPane implements Initializable {
 			FXMLLoader loader = new FXMLLoader(PrincipalController.class.getResource("/com/canauhtli/cfdi/ui/ListadoPeriodo.fxml"));
 			loader.setController(lpc);
 			listadoPeriodo = loader.load();
+			
+			log.debug("Creando nodo ListadoFacturas");
+			loader = new FXMLLoader(PrincipalController.class.getResource("/com/canauhtli/cfdi/ui/ListadoFacturas.fxml"));
+			loader.setController(fc);
+			listadoFacturas = loader.load();
 			
 			log.debug("Creando nodo ConfigEmisor");
 			loader = new FXMLLoader(PrincipalController.class.getResource("/com/canauhtli/cfdi/ui/ConfigEmisor.fxml"));
@@ -131,10 +142,10 @@ public class PrincipalController extends BorderPane implements Initializable {
 			configDB = loader.load();
 			
 			if (dbm.isConectado()) {
-				log.debug("Mostrar nodo Listado Periodo");
-				contenido.getChildren().add(listadoPeriodo);
+				log.debug("Mostrar nodo Facturas");
+				contenido.getChildren().add(listadoFacturas);
 			} else {
-				mNomina.setDisable(true);
+				mMonitor.setDisable(true);
 				mConfiguracion.setDisable(true);
 				log.debug("Mostrar nodo de configuracion de BD");
 				contenido.getChildren().add(configDB);
@@ -156,6 +167,11 @@ public class PrincipalController extends BorderPane implements Initializable {
 		if ("mPeriodos".equals(m.getId())) {
 			contenido.getChildren().remove(0);
 			contenido.getChildren().add(listadoPeriodo);
+		}
+		
+		if ("mFacturas".equals(m.getId())) {
+			contenido.getChildren().remove(0);
+			contenido.getChildren().add(listadoFacturas);
 		}
 		
 		if ("mEmisor".equals(m.getId())) {
@@ -191,7 +207,7 @@ public class PrincipalController extends BorderPane implements Initializable {
 	}
 	
 	public void activa() {
-		mNomina.setDisable(false);
+		mMonitor.setDisable(false);
 		mConfiguracion.setDisable(false);
 		cm = new ConfigManager(dbm);
 	}

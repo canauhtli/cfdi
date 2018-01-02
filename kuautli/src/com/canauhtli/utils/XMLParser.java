@@ -9,8 +9,8 @@ import javax.xml.bind.Unmarshaller;
 import org.w3c.dom.Node;
 
 import com.canauhtli.cfdi.CFDIException;
-import com.canauhtli.cfdi.sat.Comprobante;
-import com.canauhtli.cfdi.sat.timbre.TimbreFiscalDigital;
+import com.canauhtli.cfdi.sat.cfd33.Comprobante;
+import com.canauhtli.cfdi.sat.timbre11.TimbreFiscalDigital;
 
 public class XMLParser {
 

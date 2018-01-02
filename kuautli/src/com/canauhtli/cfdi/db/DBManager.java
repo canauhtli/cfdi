@@ -2,6 +2,7 @@ package com.canauhtli.cfdi.db;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -144,6 +145,14 @@ public class DBManager {
 		return rn;
 	}
 	
+	public ReciboNomina obtenerReciboNominaPorUUID(String uuid) {
+		EntityManager em = factory.createEntityManager();
+		Query query = em.createNamedQuery("ReciboNomina.findByUUID");
+		query.setParameter("uuid", uuid);
+		ReciboNomina rn = (ReciboNomina) query.getSingleResult();
+		return rn;
+	}
+	
 	public void actualizaReciboNomina(ReciboNomina recibo) {
 		EntityManager em = factory.createEntityManager();
 		em.getTransaction().begin();
@@ -161,6 +170,75 @@ public class DBManager {
 		List<ReciboNomina> listaRecibos = query.getResultList();
 		em.getTransaction().commit();
 		return listaRecibos;
+	}
+	
+	public Factura registraFactura(Factura factura) {
+		EntityManager em = factory.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(factura);
+		em.flush();
+		em.getTransaction().commit();
+		em.close();
+		return factura;
+	}
+	
+	public void actualizaFactura(Factura factura) {
+		EntityManager em = factory.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(factura);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public Factura obtenFactura(Long id) {
+		EntityManager em = factory.createEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createNamedQuery("Factura.findPorId");
+		query.setParameter("id", id);
+		Factura factura = (Factura) query.getSingleResult();
+		return factura;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Factura> obtenFacturaCodigo(String codigo) {
+		EntityManager em = factory.createEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createNamedQuery("Factura.findByCodigo");
+		query.setParameter("codigo", codigo);
+		List<Factura> facturas = query.getResultList();
+		em.getTransaction().commit();
+		return facturas;
+	}
+	
+	public Factura obtenFacturaUuid(String uuid) {
+		EntityManager em = factory.createEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createNamedQuery("Factura.findByUUID");
+		query.setParameter("uuid", uuid);
+		Factura factura = (Factura) query.getSingleResult();
+		return factura;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Factura> obtenFacturaCliente(Long cliente) {
+		EntityManager em = factory.createEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createNamedQuery("Factura.findByCliente");
+		query.setParameter("cliente", cliente);
+		List<Factura> facturas = query.getResultList();
+		em.getTransaction().commit();
+		return facturas;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Factura> obtenFacturaFecha(Date fechaIni, Date fechaFin) {
+		EntityManager em = factory.createEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createNamedQuery("Factura.findByFecha");
+		query.setParameter("fini", fechaIni);
+		query.setParameter("ffin", fechaFin);
+		List<Factura> facturas = query.getResultList();
+		return facturas;
 	}
 	
 	public String buscaValorConfig(String campo) {
@@ -202,4 +280,5 @@ public class DBManager {
 		config.setValor(valor);
 		em.getTransaction().commit();
 	}
+
 }

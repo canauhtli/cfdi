@@ -12,7 +12,8 @@ import javax.persistence.*;
 @Table(name="cfdi_recibo_nomina")
 @NamedQueries({
 	@NamedQuery(name="ReciboNomina.findAll", query="SELECT r FROM ReciboNomina r"),
-	@NamedQuery(name="ReciboNomina.findByPeriodo", query="SELECT r FROM ReciboNomina r WHERE r.idPeriodo = :periodo")
+	@NamedQuery(name="ReciboNomina.findByPeriodo", query="SELECT r FROM ReciboNomina r WHERE r.idPeriodo = :periodo"),
+	@NamedQuery(name="ReciboNomina.findByUUID", query="SELECT r FROM ReciboNomina r WHERE r.uuid = :uuid")
 })
 public class ReciboNomina implements Serializable {
 	private static final long serialVersionUID = 1L;

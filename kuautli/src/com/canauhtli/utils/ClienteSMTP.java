@@ -21,6 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.canauhtli.cfdi.CFDIException;
+import com.canauhtli.cfdi.factura.FacturaCorreo;
 import com.canauhtli.cfdi.nomina.ReciboCorreo;
 import com.canauhtli.config.ConfigManager;
 
@@ -59,6 +60,44 @@ public class ClienteSMTP {
 	
 	public void addRecibo(ReciboCorreo recibo) {
 		recibos.add(recibo);
+	}
+	
+	public void enviaFactura(FacturaCorreo factura) {
+		Transport transport = null;
+		MimeMessage message = new MimeMessage(session);
+		factura.setEnviado(false);
+		try {
+			transport = session.getTransport();
+			transport.connect();
+			message.setFrom(new InternetAddress(cm.getMailConfig("remitente")));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(factura.getCorreo()));
+            message.setSubject(cm.getMailConfig("asunto"));
+            MimeBodyPart htmlPart = new MimeBodyPart();
+            htmlPart.setContent(factura.getMsg(), "text/html");
+            MimeBodyPart pdfAttachment = new MimeBodyPart();
+            pdfAttachment.setFileName("Factura_" + factura.getFactura() + ".pdf");
+            pdfAttachment.addHeader("Content-Type", "application/pdf");
+			pdfAttachment.attachFile(factura.getPathPdf());
+			MimeBodyPart xmlAttachment = new MimeBodyPart();
+            xmlAttachment.setFileName("Factura_" + factura.getFactura() + ".xml");
+            xmlAttachment.setContent(factura.getXml(), "text/xml");
+            MimeMultipart mp = new MimeMultipart();
+            mp.addBodyPart(htmlPart);
+            mp.addBodyPart(pdfAttachment);
+            mp.addBodyPart(xmlAttachment);
+            message.setContent(mp);
+            transport.sendMessage(message, InternetAddress.parse(factura.getCorreo()));
+            factura.setEnviado(true);
+		} catch (NoSuchProviderException nspe) {
+			factura.setError("No puede comunicarme con el servidor de correo");
+			log.error("No pude comunicarme con el servidor de correo");
+		} catch (MessagingException ae) {
+			factura.setError("Dirección de correo inválida");
+			log.error("Enviado correo a cliente {}: {}", factura.getNumCliente(), factura.getCorreo(), ae);
+		} catch (IOException ioe) {
+			factura.setError("PDF no encontrado");
+			log.error("No se encontro el PDF {}", factura.getPathPdf(), ioe);
+		}
 	}
 	
 	public void enviaCorreos() throws CFDIException {

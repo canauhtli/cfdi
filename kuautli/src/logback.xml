@@ -10,10 +10,10 @@
   </appender>
   
  <appender name="CFDI" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>C:\Users\eduardo\proyectos\cfdi\cfdi.log</file>
+    <file>log/cfdi.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       <!-- daily rollover -->
-      <fileNamePattern>C:\Users\eduardo\proyectos\cfdi\cfdi.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <fileNamePattern>log/cfdi-%d{yyyyMMdd}.log</fileNamePattern>
 
       <!-- keep 30 days' worth of history -->
       <maxHistory>30</maxHistory>

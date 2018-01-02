@@ -48,6 +48,19 @@ public class DocumentoPDF {
             log.error("Generando PDF", e);
         }
     }
+    
+    public void generaFactura(ArrayList<ConceptoFactura> conceptos) {
+    	try {
+    		JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(conceptos);
+    		JasperPrint jp = JasperFillManager.fillReport((String) plantilla, params, (JRDataSource) ds);
+    		JasperExportManager.exportReportToPdfFile((JasperPrint) jp, nombre);
+    		if (imprimir) {
+    			imprimePDF(jp);
+    		}
+    	} catch (JRException e) {
+    		log.error("Generando PDF", e);
+    	}
+    }
 
     private void imprimePDF(JasperPrint jp) {
         boolean printDialog = false;

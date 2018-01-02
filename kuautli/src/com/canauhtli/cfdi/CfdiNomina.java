@@ -93,10 +93,8 @@ public class CfdiNomina {
 //				con.extrae(serieExt, folioExt, ref);
 				break;
 			case CANCELAR:
-				log.debug("Cancelar factura");
-//				int folio = con.validaCanExt(args);
-//				String serie = args[1];
-//				con.cancela(serie, folio);
+				log.debug("Cancelar recibos de nomina");
+				nom.canclear(args);
 				break;
 			case GENERAR:
 				log.debug("Inicia emisión proceso de nómina");
@@ -144,6 +142,28 @@ public class CfdiNomina {
 					enviaRecibos(periodo, pn.getRecibos());
 				}
 			}
+		} catch (ClientePACException e) {
+			log.error("No fue posible inicializar al proveedor {}", cm.getProveedor(), e);
+		}
+	}
+	
+	private void canclear(String args[]) throws CFDIException {
+		if (args.length < 2) {
+			throw new  CFDIException("Parametros incorrectos al invocar Cancelar");
+		}
+		
+		File entrada = new File(args[1]);
+		if ((!entrada.isFile()) && (!entrada.canRead())) {
+			throw new CFDIException("No se puede leer el archivo origen");
+		}
+		
+		log.info("Inicia proceso de cancelación con el archivo de entrada {}", entrada.getName());
+		
+		try {
+			ClienteServicioPAC pac = ClienteFactory.getCliente(cm.getProveedorConfig(cm.getProveedor()));
+			Cancelador cancelador = new Cancelador(madb);
+			cancelador.leerArchivo(entrada);
+			cancelador.cancelar(pac);
 		} catch (ClientePACException e) {
 			log.error("No fue posible inicializar al proveedor {}", cm.getProveedor(), e);
 		}

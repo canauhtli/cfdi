@@ -23,9 +23,10 @@
          <children>
             <MenuBar layoutY="39.0" prefHeight="3.0" prefWidth="750.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
               <menus>
-                <Menu fx:id="mNomina" mnemonicParsing="false" text="Nomina">
+                <Menu fx:id="mMonitor" mnemonicParsing="false" text="Monitor">
                   <items>
-                        <MenuItem fx:id="mPeriodos" mnemonicParsing="false" onAction="#cambiaContenido" text="Periodos" />
+                        <MenuItem fx:id="mPeriodos" mnemonicParsing="false" onAction="#cambiaContenido" text="Nómina" />
+                        <MenuItem fx:id="mFacturas" mnemonicParsing="false" onAction="#cambiaContenido" text="Facturas" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                     <MenuItem fx:id="mSalir" mnemonicParsing="false" onAction="#salir" text="Salir" />
                   </items>
