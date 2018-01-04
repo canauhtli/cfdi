@@ -22,15 +22,18 @@ public class Generales {
 	private String serie;
 	
 	@Field(at=4)
-	private String sentido;
+	private int folio;
 	
 	@Field(at=5)
-	private String moneda;
+	private String sentido;
 	
 	@Field(at=6)
-	private double tipoCambio;
+	private String moneda;
 	
 	@Field(at=7)
+	private double tipoCambio;
+	
+	@Field(at=8)
 	private String formaPago;
 
 	public String getTipo() {
@@ -55,6 +58,14 @@ public class Generales {
 
 	public void setSerie(String serie) {
 		this.serie = serie;
+	}
+	
+	public int getFolio() {
+		return folio;
+	}
+	
+	public void setFolio(int folio) {
+		this.folio = folio;
 	}
 
 	public String getSentido() {

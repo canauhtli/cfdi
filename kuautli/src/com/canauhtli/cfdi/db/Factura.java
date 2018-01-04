@@ -57,6 +57,9 @@ public class Factura implements Serializable {
 	@Lob
 	@Column(name="COMPROBANTE_FISCAL")
 	private String comprobanteFiscal;
+	
+	@Column(name="FOLIO")
+	private int folio;
 
 	public long getIdFactura() {
 		return idFactura;
@@ -128,6 +131,14 @@ public class Factura implements Serializable {
 
 	public void setComprobanteFiscal(String comprobanteFiscal) {
 		this.comprobanteFiscal = comprobanteFiscal;
+	}
+	
+	public int getFolio() {
+		return folio;
+	}
+	
+	public void setFolio(int folio) {
+		this.folio = folio;
 	}
 	
 }

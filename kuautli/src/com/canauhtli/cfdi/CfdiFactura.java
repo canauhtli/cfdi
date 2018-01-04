@@ -101,7 +101,7 @@ public class CfdiFactura extends CFDIDocumento {
 				if ("1".equals(cm.getGeneralConfig("generarPdf"))) {
 					generaPDF(factura);
 				}
-				if ("1".equals(cm.getGeneralConfig("enviarCorreo"))) {
+				if ("1".equals(cm.getMailConfig("enviarCorreo"))) {
 					if (enviaFactura(factura)) {
 						factura.setEstatus(Estatus.ENVIADO);
 						actualizaFactura(factura);
@@ -278,6 +278,7 @@ private void guardaXML(Factura factura) throws CFDIException {
 			marshaller.marshal(factura, os);
 			com.canauhtli.cfdi.db.Factura fac = new com.canauhtli.cfdi.db.Factura();
 			fac.setCodigo(factura.getCodigo());
+			fac.setFolio(factura.getGenerales().getFolio());
 			fac.setCliente(factura.getReceptor().getNumCliente());
 			fac.setEstatus(Estatus.NUEVO.getEstatus());
 			fac.setFactura(os.toString());
