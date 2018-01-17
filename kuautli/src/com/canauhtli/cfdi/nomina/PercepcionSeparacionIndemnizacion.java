@@ -14,7 +14,7 @@ public class PercepcionSeparacionIndemnizacion {
 	private double totalPagado;
 	
 	@Field(at=2, type=Integer.class)
-	private int numAñosServicio;
+	private int numAÃ±osServicio;
 	
 	@Field(at=3, type=Double.class)
 	private double ultimoSueldoMensOrd;
@@ -33,12 +33,12 @@ public class PercepcionSeparacionIndemnizacion {
 		this.totalPagado = totalPagado;
 	}
 
-	public int getNumAñosServicio() {
-		return numAñosServicio;
+	public int getNumAÃ±osServicio() {
+		return numAÃ±osServicio;
 	}
 
-	public void setNumAñosServicio(int numAñosServicio) {
-		this.numAñosServicio = numAñosServicio;
+	public void setNumAÃ±osServicio(int numAÃ±osServicio) {
+		this.numAÃ±osServicio = numAÃ±osServicio;
 	}
 
 	public double getUltimoSueldoMensOrd() {
@@ -68,7 +68,7 @@ public class PercepcionSeparacionIndemnizacion {
 	public String toRecord() {
 		StringBuilder sb = new StringBuilder("J|");
 		sb.append(totalPagado).append("|")
-		  .append(numAñosServicio).append("|")
+		  .append(numAÃ±osServicio).append("|")
 		  .append(ultimoSueldoMensOrd).append("|")
 		  .append(ingresoAcumulable).append("|")
 		  .append(ingresoNoAcumulable);
@@ -78,7 +78,7 @@ public class PercepcionSeparacionIndemnizacion {
 	public String toString() {
 		StringBuilder sb = new StringBuilder("SeparaqcionIndemn[");
 		sb.append("totalPagado=").append(totalPagado).append(", ")
-		  .append("numAñosServicio=").append(numAñosServicio).append(", ")
+		  .append("numAÃ±osServicio=").append(numAÃ±osServicio).append(", ")
 		  .append("ultimoSueldoMensOrd=").append(ultimoSueldoMensOrd).append(", ")
 		  .append("ingresoAcumulable=").append(ingresoAcumulable).append(", ")
 		  .append("ingresoNoAcumulable=").append(ingresoNoAcumulable).append("]");

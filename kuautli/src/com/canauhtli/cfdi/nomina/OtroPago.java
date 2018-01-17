@@ -36,7 +36,7 @@ public class OtroPago {
 	private double saldoAFavor;
 	
 	@Field(at=9, type=Short.class)
-	private short año;
+	private short aÃ±o;
 	
 	@Field(at=10, type=Double.class)
 	private double remanente;
@@ -105,12 +105,12 @@ public class OtroPago {
 		this.saldoAFavor = saldoAFavor;
 	}
 
-	public short getAño() {
-		return año;
+	public short getAÃ±o() {
+		return aÃ±o;
 	}
 
-	public void setAño(short año) {
-		this.año = año;
+	public void setAÃ±o(short aÃ±o) {
+		this.aÃ±o = aÃ±o;
 	}
 
 	public double getRemanente() {
@@ -131,7 +131,7 @@ public class OtroPago {
 		  .append(subsidioCausado).append("|")
 		  .append(saldo).append("|")
 		  .append(saldoAFavor).append("|")
-		  .append(año).append("|")
+		  .append(aÃ±o).append("|")
 		  .append(remanente);
 		return sb.toString();
 	}
@@ -146,7 +146,7 @@ public class OtroPago {
 		  .append("subsidioCausado=").append(subsidioCausado).append(", ")
 		  .append("saldo=").append(saldo).append(", ")
 		  .append("saldoAFavor=").append(saldoAFavor).append(", ")
-		  .append("año=").append(año).append(", ")
+		  .append("aï¿½o=").append(aÃ±o).append(", ")
 		  .append("remanente=").append(remanente).append("]");
 		return sb.toString();
 	}

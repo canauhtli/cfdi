@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="591.0" prefWidth="898.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="359.0" layoutY="7.0" prefHeight="15.0" prefWidth="131.0" text="Detalle de Factura" />
+      <Label layoutX="14.0" layoutY="29.0" prefHeight="15.0" prefWidth="78.0" text="Factura #" />
+      <Label layoutX="14.0" layoutY="57.0" prefHeight="15.0" prefWidth="78.0" text="Código" />
+      <Label layoutX="14.0" layoutY="84.0" prefHeight="15.0" prefWidth="78.0" text="Estatus" />
+      <TextField fx:id="tfFactura" editable="false" layoutX="95.0" layoutY="24.0" />
+      <TextField fx:id="tfCodigo" editable="false" layoutX="95.0" layoutY="52.0" />
+      <TextField fx:id="tfEstatus" editable="false" layoutX="95.0" layoutY="79.0" />
+      <Label layoutX="424.0" layoutY="29.0" text="Cliente #" />
+      <Label layoutX="425.0" layoutY="84.0" prefHeight="15.0" prefWidth="48.0" text="UUID" />
+      <TextField fx:id="tfNumCliente" editable="false" layoutX="508.0" layoutY="24.0" />
+      <TextField fx:id="tfCliente" editable="false" layoutX="508.0" layoutY="52.0" prefHeight="25.0" prefWidth="379.0" />
+      <TextField fx:id="tfUuid" editable="false" layoutX="508.0" layoutY="79.0" prefHeight="25.0" prefWidth="379.0" />
+      <ToolBar layoutX="14.0" layoutY="109.0" prefHeight="40.0" prefWidth="872.0">
+        <items>
+          <Button fx:id="btTxt" mnemonicParsing="false" onAction="#muestraTexto" prefHeight="25.0" prefWidth="25.0" styleClass="fac-txt" />
+            <Button fx:id="btPdf" mnemonicParsing="false" onAction="#muestraPdf" prefHeight="25.0" prefWidth="25.0" styleClass="fac-pdf" />
+            <Button fx:id="btXml" mnemonicParsing="false" onAction="#muestraXml" prefHeight="25.0" prefWidth="25.0" styleClass="fac-xml" />
+            <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="80.0" />
+            <Button fx:id="btMail" mnemonicParsing="false" onAction="#enviarCorreo" prefHeight="25.0" prefWidth="25.0" styleClass="fac-mail" />
+        </items>
+      </ToolBar>
+      <StackPane layoutX="14.0" layoutY="149.0" prefHeight="431.0" prefWidth="872.0">
+         <children>
+            <Pane fx:id="pTxt" prefHeight="286.0" prefWidth="537.0">
+               <children>
+                  <WebView fx:id="wvTxt" layoutX="3.0" layoutY="3.0" prefHeight="431.0" prefWidth="872.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="pPdf" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <WebView fx:id="wvPdf" prefHeight="431.0" prefWidth="872.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="pXml" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <WebView fx:id="wvXml" prefHeight="431.0" prefWidth="872.0" />
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

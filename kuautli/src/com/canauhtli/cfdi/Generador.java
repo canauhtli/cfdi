@@ -354,7 +354,7 @@ public class Generador {
 			SeparacionIndemnizacion si = new SeparacionIndemnizacion();
 			si.setIngresoAcumulable(rne.getSeparacionIndemnizacion().getIngresoAcumulable());
 			si.setIngresoNoAcumulable(rne.getSeparacionIndemnizacion().getIngresoNoAcumulable());
-			si.setNumAñosServicio(rne.getSeparacionIndemnizacion().getNumAñosServicio());
+			si.setNumAÃ±osServicio(rne.getSeparacionIndemnizacion().getNumAÃ±osServicio());
 			si.setTotalPagado(rne.getSeparacionIndemnizacion().getTotalPagado());
 			si.setUltimoSueldoMensOrd(rne.getSeparacionIndemnizacion().getUltimoSueldoMensOrd());
 			nom.setPercepcionSeparacionIndemnizacion(si);
@@ -383,7 +383,7 @@ public class Generador {
 				if (op.isSaldo()) {
 					CompensacionSaldoAFavor saldoFavor = new CompensacionSaldoAFavor();
 					saldoFavor.setSaldoAFavor(op.getSaldoAFavor());
-					saldoFavor.setAño(op.getAño());
+					saldoFavor.setAÃ±o(op.getAÃ±o());
 					saldoFavor.setRemanente(op.getRemanente());
 					otroPago.setCompensacion(saldoFavor);
 				}

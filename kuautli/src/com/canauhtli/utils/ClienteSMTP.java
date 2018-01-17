@@ -92,11 +92,14 @@ public class ClienteSMTP {
 			factura.setError("No puede comunicarme con el servidor de correo");
 			log.error("No pude comunicarme con el servidor de correo");
 		} catch (MessagingException ae) {
-			factura.setError("Dirección de correo inválida");
+			factura.setError("Direcciï¿½n de correo invï¿½lida");
 			log.error("Enviado correo a cliente {}: {}", factura.getNumCliente(), factura.getCorreo(), ae);
 		} catch (IOException ioe) {
 			factura.setError("PDF no encontrado");
 			log.error("No se encontro el PDF {}", factura.getPathPdf(), ioe);
+		} catch (Exception e) {
+			factura.setError("General");
+			log.error("Error general", e);
 		}
 	}
 	
@@ -129,7 +132,7 @@ public class ClienteSMTP {
 	                recibo.setEnviado(true);
 				} catch (AddressException ae) {
                     recibo.setEnviado(false);
-                    recibo.setError("Dirección de correo invalida");
+                    recibo.setError("Direcciï¿½n de correo invalida");
                     log.error("Enviando correo a empleado " + recibo.getNumEmp() + ":" + recibo.getCorreo(), ae);
                 } catch (MessagingException me) {
                     recibo.setEnviado(false);

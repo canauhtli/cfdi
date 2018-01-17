@@ -32,4 +32,9 @@
 		<level value="debug" />
 		<appender-ref ref="CFDI" />
 	</logger>
+	
+  <logger name="com.canauhtli.utils" additivity="false">
+    <level value="debut"/>
+    <appender-ref ref="CFDI" />
+  </logger>
 </configuration>

@@ -49,7 +49,7 @@ public class CfdiFactura extends CFDIDocumento {
 	
 	public static void main(String[] args) {
 		if (args.length == 0) {
-			escribeError("No se indico la acción" + printUso());
+			escribeError("No se indico la acciï¿½n" + printUso());
 			System.exit(1);
 		}
 		Accion acc = Accion.fromArg(args[0]);
@@ -77,7 +77,7 @@ public class CfdiFactura extends CFDIDocumento {
 
 	private void generar(String args[]) throws CFDIException {
 		if (args.length < 2) {
-			throw new CFDIException("No se especificó el archivo origen");
+			throw new CFDIException("No se especificï¿½ el archivo origen");
 		}
 		File fact = new File(args[1]);
 		if ((!fact.isFile()) && (!fact.canRead())) {
@@ -101,7 +101,7 @@ public class CfdiFactura extends CFDIDocumento {
 				if ("1".equals(cm.getGeneralConfig("generarPdf"))) {
 					generaPDF(factura);
 				}
-				if ("1".equals(cm.getMailConfig("enviarCorreo"))) {
+				if (("1".equals(cm.getMailConfig("enviarCorreo"))) && (factura.getExtras().getCorreo() != null) && (!"".equals(factura.getExtras().getCorreo().trim()))) {
 					if (enviaFactura(factura)) {
 						factura.setEstatus(Estatus.ENVIADO);
 						actualizaFactura(factura);
@@ -115,7 +115,7 @@ public class CfdiFactura extends CFDIDocumento {
 	
 private void guardaXML(Factura factura) throws CFDIException {
 		
-		String path = cm.getGeneralConfig("carpetaSalida") + "/" + factura.getCodigo() + ".xml";
+		String path = cm.getGeneralConfig("carpetaSalida") + "/" + factura.getNombreArchivo() + ".xml";
 		OutputStreamWriter osw = null;
 		BufferedWriter bw = null;
 		try {
@@ -168,7 +168,7 @@ private void guardaXML(Factura factura) throws CFDIException {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		DocumentoPDF dpdf = new DocumentoPDF();
-		dpdf.setNombre(cm.getGeneralConfig("carpetaSalida") + "/" + factura.getCodigo() + ".pdf");
+		dpdf.setNombre(cm.getGeneralConfig("carpetaSalida") + "/" + factura.getNombreArchivo() + ".pdf");
 		dpdf.setCopias(Integer.parseInt(cm.getGeneralConfig("copias")));
 		dpdf.setImprimir(cm.getGeneralConfig("imprimir").equals("1"));
 		dpdf.setPlantilla(cm.getGeneralConfig("plantilla"));
@@ -253,7 +253,7 @@ private void guardaXML(Factura factura) throws CFDIException {
 		fc.setMsg(cm.getMailConfig("mensaje"));
 		fc.setNombre(factura.getReceptor().getRazonSocial());
 		fc.setNumCliente(""+factura.getReceptor().getNumCliente());
-		fc.setPathPdf(cm.getGeneralConfig("carpetaSalida") + "/" + factura.getCodigo() + ".pdf");
+		fc.setPathPdf(cm.getGeneralConfig("carpetaSalida") + "/" + factura.getNombreArchivo() + ".pdf");
 		fc.setFactura(factura.getCodigo());
 		fc.setXml(factura.getXml());
 		smtp.enviaFactura(fc);

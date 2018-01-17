@@ -2,6 +2,8 @@ package com.canauhtli.cfdi.ui.controls;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,7 +31,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.StringConverter;
 
 public class FacturasController extends AnchorPane {
 
@@ -87,9 +92,11 @@ public class FacturasController extends AnchorPane {
 	private TableColumn<FacturaView, String> correoCol = new TableColumn<FacturaView, String>();
 	
 	private DBManager dbm;
+	private PrincipalController principal;
 	
-	public FacturasController(DBManager dbm) {
+	public FacturasController(DBManager dbm, PrincipalController principal) {
 		this.dbm = dbm;
+		this.principal = principal;
 	}
 	
 	@FXML
@@ -100,6 +107,30 @@ public class FacturasController extends AnchorPane {
 		cfdiCol.setCellValueFactory(new PropertyValueFactory<FacturaView, String>("cfdi"));
 		pdfCol.setCellValueFactory(new PropertyValueFactory<FacturaView, String>("pdf"));
 		correoCol.setCellValueFactory(new PropertyValueFactory<FacturaView, String>("correo"));
+		
+		String pattern = "dd/MM/yyyy";
+		dFecha.setConverter(new StringConverter<LocalDate>() {
+
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+			@Override
+			public String toString(LocalDate date) {
+				String fecha = "";
+				if (date != null) {
+					fecha = formatter.format(date);
+				}
+				return fecha;
+			}
+
+			@Override
+			public LocalDate fromString(String fecha) {
+				LocalDate date = null;
+				if ((fecha != null) && (!fecha.isEmpty())) {
+					date = LocalDate.parse(fecha, formatter);
+				}
+				return date;
+			}
+			
+		});
 	}
 	
 	@FXML
@@ -131,6 +162,16 @@ public class FacturasController extends AnchorPane {
 		tvFacturas.setItems(lstFactVs);
 	}
 	
+	@FXML
+	private void mostrarDetalle(MouseEvent me) {
+		if (me.getButton().equals(MouseButton.PRIMARY)) {
+			if (me.getClickCount() == 2) {
+				FacturaView factura = tvFacturas.getSelectionModel().getSelectedItem();
+				principal.muestraDetalleFactura(factura.getIdFactura());
+			}
+		}
+	}
+	
 	private List<FacturaView> obtenFacturas(List<Factura> facturas) {
 		ArrayList<FacturaView> lstFacs = new ArrayList<FacturaView>();
 		try {
@@ -139,6 +180,7 @@ public class FacturasController extends AnchorPane {
 				com.canauhtli.cfdi.factura.Factura jFac = (com.canauhtli.cfdi.factura.Factura) jtools.fromJsonString(f.getFactura());
 				
 				FacturaView fv = new FacturaView();
+				fv.setIdFactura(f.getIdFactura());
 				fv.setCodigo(f.getCodigo());
 				fv.setRfc(jFac.getReceptor().getRfc());
 				fv.setStatus(Estatus.fromEstatus(f.getEstatus()).name());

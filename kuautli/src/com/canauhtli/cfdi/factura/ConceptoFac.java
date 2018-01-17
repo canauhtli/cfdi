@@ -147,6 +147,10 @@ public class ConceptoFac {
 		this.impuestos = impuestos;
 	}
 	
+	public void setImpuestos(List<ImpuestoConceptoFac> impuestos) {
+		this.impuestos = (ArrayList<ImpuestoConceptoFac>) impuestos;
+	}
+	
 	public void addImpuesto(ImpuestoConceptoFac impuesto) {
 		if (impuestos == null) {
 			impuestos = new ArrayList<ImpuestoConceptoFac>();

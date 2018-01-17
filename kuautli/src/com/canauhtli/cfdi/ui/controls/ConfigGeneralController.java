@@ -154,7 +154,7 @@ public class ConfigGeneralController extends AnchorPane {
 		validar();
 		
 		Notifications notification = Notifications.create()
-				.title("Configuración general")
+				.title("ConfiguraciÃ³n general")
                 .position(Pos.CENTER);
 		
 		if (valido) {
@@ -170,7 +170,7 @@ public class ConfigGeneralController extends AnchorPane {
 			cm.setGeneralConfig("imprimir", tsImprimir.isSelected() ? "1" : "0");
 			cm.setGeneralConfig("impresora", impresora.getValue());
 			cm.guardaGeneralConfig();
-			notification.text("Configuración general guardada");
+			notification.text("ConfiguraciÃ³n general guardada");
 			notification.showInformation();
 		} else {
 			notification.text("Revisar que todos los campos esten definidos");

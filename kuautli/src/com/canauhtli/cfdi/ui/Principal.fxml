@@ -11,7 +11,7 @@
    <bottom>
       <Pane prefHeight="21.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="97.0" layoutY="2.0" text="Mensajes" />
+            <Label layoutX="97.0" layoutY="2.0" />
          </children>
       </Pane>
    </bottom>
@@ -27,6 +27,7 @@
                   <items>
                         <MenuItem fx:id="mPeriodos" mnemonicParsing="false" onAction="#cambiaContenido" text="Nómina" />
                         <MenuItem fx:id="mFacturas" mnemonicParsing="false" onAction="#cambiaContenido" text="Facturas" />
+                        <MenuItem fx:id="mMensajes" mnemonicParsing="false" onAction="#cambiaContenido" text="Mensajes" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                     <MenuItem fx:id="mSalir" mnemonicParsing="false" onAction="#salir" text="Salir" />
                   </items>

@@ -36,6 +36,9 @@ public class PrincipalController extends BorderPane implements Initializable {
 	private MenuItem mFacturas;
 	
 	@FXML
+	private MenuItem mMensajes;
+	
+	@FXML
 	private MenuItem mSalir;
 	
 	// Menu Configuracion
@@ -75,6 +78,8 @@ public class PrincipalController extends BorderPane implements Initializable {
 	private AnchorPane configProveedor;
 	private AnchorPane configCertificados;
 	private AnchorPane configDB;
+	private AnchorPane logViewer;
+	private AnchorPane detalleFac;
 	
 	private ListadoPeriodoController lpc;
 	private FacturasController fc;
@@ -83,6 +88,8 @@ public class PrincipalController extends BorderPane implements Initializable {
 	private ConfigMailController cmc;
 	private ConfigProveedorController cpc;
 	private ConfigDBController cdbc;
+	private LogViewerController lvc;
+	private FacturaController dfc;
 	
 	private DBManager dbm;
 	private ConfigManager cm;
@@ -91,12 +98,14 @@ public class PrincipalController extends BorderPane implements Initializable {
 		this.dbm = dbm;
 		this.cm = cm;
 		lpc = new ListadoPeriodoController(dbm);
-		fc = new FacturasController(dbm);
+		fc = new FacturasController(dbm, this);
 		cec = new ConfigEmisorController(cm);
 		cgc = new ConfigGeneralController(cm);
 		cmc = new ConfigMailController(cm);
 		cpc = new ConfigProveedorController(cm);
 		cdbc = new ConfigDBController(this);
+		lvc = new LogViewerController();
+		dfc = new FacturaController(dbm, cm);
 	}
 	
 	public Pane getContenido() {
@@ -140,6 +149,16 @@ public class PrincipalController extends BorderPane implements Initializable {
 			loader = new FXMLLoader(PrincipalController.class.getResource("/com/canauhtli/cfdi/ui/ConfigDB.fxml"));
 			loader.setController(cdbc);
 			configDB = loader.load();
+			
+			log.debug("Creando nodo LogViewer");
+			loader = new FXMLLoader(PrincipalController.class.getResource("/com/canauhtli/cfdi/ui/LogViewer.fxml"));
+			loader.setController(lvc);
+			logViewer = loader.load();
+			
+			log.debug("Creando nodo DetalleFactura");
+			loader = new FXMLLoader(PrincipalController.class.getResource("/com/canauhtli/cfdi/ui/Factura.fxml"));
+			loader.setController(dfc);
+			detalleFac = loader.load();
 			
 			if (dbm.isConectado()) {
 				log.debug("Mostrar nodo Facturas");
@@ -204,6 +223,19 @@ public class PrincipalController extends BorderPane implements Initializable {
 			contenido.getChildren().add(configDB);
 		}
 		
+		if ("mMensajes".equals(m.getId())) {
+			contenido.getChildren().remove(0);
+			contenido.getChildren().add(logViewer);
+		}
+		
+	}
+	
+	public void muestraDetalleFactura(long idFactura) {
+		dfc.setIdFactura(idFactura);
+		dfc.cargaFactura();
+		
+		contenido.getChildren().remove(0);
+		contenido.getChildren().add(detalleFac);
 	}
 	
 	public void activa() {

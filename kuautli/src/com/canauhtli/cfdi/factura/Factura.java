@@ -16,14 +16,14 @@ public class Factura {
 	private Impuesto impuesto;
 	private Totales totales;
 	private Extras extras;
-	private ArrayList<ConceptoFac> conceptos;
-	private ArrayList<ImpuestoConceptoFac> impuestos;
-	private ArrayList<Comentario> comentarios;
-	private ArrayList<Observacion> observaciones;
-	private ArrayList<DescuentoRecargo> descuentos;
-	private ArrayList<Pago> pagos;
-	private ArrayList<DocumentoRelacionado> documentos;
-	private ArrayList<ImpuestoPago> impuestosPago;
+	private ArrayList<ConceptoFac> conceptos = new ArrayList<ConceptoFac>();
+	private ArrayList<ImpuestoConceptoFac> impuestos  = new ArrayList<ImpuestoConceptoFac>();
+	private ArrayList<Comentario> comentarios  = new ArrayList<Comentario>();
+	private ArrayList<Observacion> observaciones  = new ArrayList<Observacion>();
+	private ArrayList<DescuentoRecargo> descuentos  = new ArrayList<DescuentoRecargo>();
+	private ArrayList<Pago> pagos  = new ArrayList<Pago>();
+	private ArrayList<DocumentoRelacionado> documentos  = new ArrayList<DocumentoRelacionado>();
+	private ArrayList<ImpuestoPago> impuestosPago  = new ArrayList<ImpuestoPago>();
 	private UuidRelacionado uuidRelacionado;
 	private Estatus estatus;
 	private String xml;
@@ -289,5 +289,63 @@ public class Factura {
 				}
 			}
 		}
+	}
+	
+	public String getNombreArchivo() {
+		String archivo = "";
+		if (cfdi != null) {
+			archivo = codigo + "F" + cfdi.getFolio();
+		}
+		return archivo; 
+	}
+	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Generales -> ").append(generales).append("\r\n")
+		  .append("Receptor -> ").append(receptor).append("\r\n")
+		  .append("Encabezado ->").append(encabezado).append("\r\n")
+		  .append("Impuesto ->").append(impuesto).append("\r\n")
+		  .append("Totales ->").append(totales).append("\r\n")
+		  .append("Extras ->").append(extras).append("\r\n")
+		  .append("Conceptos ->");
+		for (ConceptoFac cf : conceptos) {
+			sb.append(cf).append("\r\n");
+			if (cf.getComentarios() != null) {
+				for (Comentario c : cf.getComentarios()) {
+					sb.append(" comentario -> ").append(c).append("\r\n");
+				}
+			}
+		}
+		sb.append("\r\n").append("Impuestos ->");
+		for (ImpuestoConceptoFac icf : impuestos) {
+			sb.append(icf);
+		}
+		sb.append("\r\n").append("Comentarios ->");
+		for (Comentario c : comentarios) {
+			sb.append(c);
+		}
+		sb.append("\r\n").append("Observaciones ->");
+		for (Observacion o : observaciones) {
+			sb.append(o);
+		}
+		sb.append("\r\n").append("Descuentos ->");
+		for (DescuentoRecargo dr : descuentos) {
+			sb.append(dr);
+		}
+		sb.append("\r\n").append("Pagos ->");
+		for (Pago p : pagos) {
+			sb.append(p);
+		}
+		sb.append("\r\n").append("Documentos ->");
+		for (DocumentoRelacionado dr : documentos) {
+			sb.append(dr);
+		}
+		sb.append("\r\n").append("ImpuestoPago ->");
+		for (ImpuestoPago ip : impuestosPago) {
+			sb.append(ip);
+		}
+		sb.append("\r\n").append("UUIDRelacionado -> ").append(uuidRelacionado);
+		
+		return sb.toString();
 	}
 }

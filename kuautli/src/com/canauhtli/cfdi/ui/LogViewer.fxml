@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="551.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="btRefresh" layoutX="768.0" layoutY="27.0" mnemonicParsing="false" onAction="#recargar" prefHeight="25.0" prefWidth="29.0" styleClass="msg-refresh" />
+      <WebView fx:id="wvLog" layoutX="10.0" layoutY="62.0" prefHeight="479.0" prefWidth="842.0" />
+   </children>
+</AnchorPane>

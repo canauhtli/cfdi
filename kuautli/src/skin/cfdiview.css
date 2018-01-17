@@ -1,6 +1,6 @@
 /*
 ##################
-Sección 1
+Secciï¿½n 1
 Define los componentes de UndecoratorScene
 ##################
 */
@@ -164,7 +164,7 @@ Define los componentes de UndecoratorScene
 /*
 #########
 Seccion 2
-Aplicación principal
+Aplicaciï¿½n principal
 #########
 */
 .root {
@@ -218,6 +218,49 @@ Aplicación principal
 	-fx-border-style: null;
 	-fx-background-color: null;
 	-fx-background-image: url("/resources/img/certificate.png");
+	-fx-background-repeat: no-repeat;
+}
+
+.msg-refresh {
+	-fx-background-radius: 0;
+	-fx-border-style: null;
+	-fx-background-color: null;
+	-fx-background-image: url("/resources/img/Refresh.png");
+	-fx-background-repeat: no-repeat;
+}
+
+.fac-txt {
+	-fx-background-radius: 0;
+	-fx-background-color: null;
+	-fx-background-image: url("/resources/img/txtFile.png");
+	-fx-background-repeat: no-repeat;
+}
+
+.fac-pdf {
+	-fx-background-radius: 0;
+	-fx-background-color: null;
+	-fx-background-image: url("/resources/img/pdfFile.png");
+	-fx-background-repeat: no-repeat;
+}
+
+.fac-xml {
+	-fx-background-radius: 0;
+	-fx-background-color: null;
+	-fx-background-image: url("/resources/img/xmlFile.png");
+	-fx-background-repeat: no-repeat;
+}
+
+.fac-print {
+	-fx-background-radius: 0;
+	-fx-background-color: null;
+	-fx-background-image: url("/resources/img/printer.png");
+	-fx-background-repeat: no-repeat;
+}
+
+.fac-mail {
+	-fx-background-radius: 0;
+	-fx-background-color: null;
+	-fx-background-image: url("/resources/img/mail.png");
 	-fx-background-repeat: no-repeat;
 }
 

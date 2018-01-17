@@ -14,7 +14,7 @@ public class Comentario implements Comparable<Comentario> {
 	private int partida;
 	
 	@Field(at=2)
-	private boolean posicion;
+	private int posicion;
 	
 	@Field(at=3, trim=true)
 	private int orden;
@@ -29,9 +29,12 @@ public class Comentario implements Comparable<Comentario> {
 		this.partida = partida;
 	}
 	public boolean isPosicion() {
+		return posicion == 1;
+	}
+	public int getPosicion() {
 		return posicion;
 	}
-	public void setPosicion(boolean posicion) {
+	public void setPosicion(int posicion) {
 		this.posicion = posicion;
 	}
 	public int getOrden() {

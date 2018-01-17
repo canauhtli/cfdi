@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EclipseLink2.6.3"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Logging"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/logging"/>
 	<classpathentry kind="con" path="org.eclipse.datatools.connectivity.jdt.DRIVERLIBRARY/MySQL JDBC Driver"/>
 	<classpathentry kind="lib" path="lib/jasypt-1.9.2.jar"/>
 	<classpathentry kind="lib" path="lib/beanio-2.1.0.M2.jar"/>
@@ -21,12 +21,16 @@
 	<classpathentry kind="lib" path="lib/joda-time-2.3.jar"/>
 	<classpathentry kind="lib" path="lib/iText-2.1.7.js2.jar"/>
 	<classpathentry kind="lib" path="lib/mail.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/clienteFEL"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ServicioPAC"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_111">
+	<classpathentry kind="lib" path="lib/groovy-2.4.12.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang3-3.5.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.6.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb-xjc.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/clienteFEL3_3"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ServicioPAC"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

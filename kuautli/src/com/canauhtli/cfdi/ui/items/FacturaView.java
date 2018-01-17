@@ -5,12 +5,21 @@ import javafx.beans.property.StringProperty;
 
 public class FacturaView {
 
+	private long idFactura;
 	private StringProperty codigo = new SimpleStringProperty();
 	private StringProperty rfc = new SimpleStringProperty();
 	private StringProperty status = new SimpleStringProperty();
 	private StringProperty cfdi = new SimpleStringProperty();
 	private StringProperty pdf = new SimpleStringProperty();
 	private StringProperty correo = new SimpleStringProperty();
+	
+	public long getIdFactura() {
+		return idFactura;
+	}
+	
+	public void setIdFactura(long idFactura) {
+		this.idFactura = idFactura;
+	}
 	
 	public final StringProperty codigoProperty() {
 		return this.codigo;
