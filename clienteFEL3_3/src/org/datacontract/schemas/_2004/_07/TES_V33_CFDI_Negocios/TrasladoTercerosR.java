@@ -8,8 +8,6 @@
 package org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios;
 
 public class TrasladoTercerosR  implements java.io.Serializable {
-    private java.lang.Integer ID;
-
     private java.math.BigDecimal importe;
 
     private java.lang.String impuesto;
@@ -20,34 +18,12 @@ public class TrasladoTercerosR  implements java.io.Serializable {
     }
 
     public TrasladoTercerosR(
-           java.lang.Integer ID,
            java.math.BigDecimal importe,
            java.lang.String impuesto,
            java.math.BigDecimal tasa) {
-           this.ID = ID;
            this.importe = importe;
            this.impuesto = impuesto;
            this.tasa = tasa;
-    }
-
-
-    /**
-     * Gets the ID value for this TrasladoTercerosR.
-     * 
-     * @return ID
-     */
-    public java.lang.Integer getID() {
-        return ID;
-    }
-
-
-    /**
-     * Sets the ID value for this TrasladoTercerosR.
-     * 
-     * @param ID
-     */
-    public void setID(java.lang.Integer ID) {
-        this.ID = ID;
     }
 
 
@@ -122,9 +98,6 @@ public class TrasladoTercerosR  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true && 
-            ((this.ID==null && other.getID()==null) || 
-             (this.ID!=null &&
-              this.ID.equals(other.getID()))) &&
             ((this.importe==null && other.getImporte()==null) || 
              (this.importe!=null &&
               this.importe.equals(other.getImporte()))) &&
@@ -145,9 +118,6 @@ public class TrasladoTercerosR  implements java.io.Serializable {
         }
         __hashCodeCalc = true;
         int _hashCode = 1;
-        if (getID() != null) {
-            _hashCode += getID().hashCode();
-        }
         if (getImporte() != null) {
             _hashCode += getImporte().hashCode();
         }
@@ -168,13 +138,6 @@ public class TrasladoTercerosR  implements java.io.Serializable {
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "TrasladoTercerosR"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("ID");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "ID"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("importe");
         elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "importe"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "decimal"));

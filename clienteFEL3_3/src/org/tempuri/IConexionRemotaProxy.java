@@ -80,10 +80,10 @@ public class IConexionRemotaProxy implements org.tempuri.IConexionRemota {
     return iConexionRemota.obtenerXMLPorReferencia(credenciales, referencia);
   }
   
-  public org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.RespuestaOperacionCR obtenerXMLPorUUID(org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.Credenciales crendeciales, java.lang.String uuid) throws java.rmi.RemoteException{
+  public org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.RespuestaOperacionCR obtenerXMLPorUUID(org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.Credenciales credenciales, java.lang.String uuid) throws java.rmi.RemoteException{
     if (iConexionRemota == null)
       _initIConexionRemotaProxy();
-    return iConexionRemota.obtenerXMLPorUUID(crendeciales, uuid);
+    return iConexionRemota.obtenerXMLPorUUID(credenciales, uuid);
   }
   
   public org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.RespuestaNumeroCreditosCR obtenerNumerosCreditos(org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.Credenciales credenciales) throws java.rmi.RemoteException{

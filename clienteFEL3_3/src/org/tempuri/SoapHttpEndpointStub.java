@@ -149,7 +149,7 @@ public class SoapHttpEndpointStub extends org.apache.axis.client.Stub implements
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("ObtenerXMLPorUUID");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://tempuri.org/", "crendeciales"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "Credenciales"), org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.Credenciales.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://tempuri.org/", "credenciales"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "Credenciales"), org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.Credenciales.class, false, false);
         param.setOmittable(true);
         param.setNillable(true);
         oper.addParameter(param);
@@ -584,15 +584,6 @@ public class SoapHttpEndpointStub extends org.apache.axis.client.Stub implements
             cachedSerClasses.add(cls);
             qName = new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "LeyendaR");
             qName2 = new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "LeyendaR");
-            cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
-            cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
-
-            qName = new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "ArrayOfNombreImpuestoR");
-            cachedSerQNames.add(qName);
-            cls = org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.NombreImpuestoR[].class;
-            cachedSerClasses.add(cls);
-            qName = new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "NombreImpuestoR");
-            qName2 = new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "NombreImpuestoR");
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
@@ -1091,6 +1082,13 @@ public class SoapHttpEndpointStub extends org.apache.axis.client.Stub implements
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
+            qName = new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "DivisaR");
+            cachedSerQNames.add(qName);
+            cls = org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.DivisaR.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
+
     }
     private void addBindings1() {
             java.lang.Class cls;
@@ -1106,13 +1104,6 @@ public class SoapHttpEndpointStub extends org.apache.axis.client.Stub implements
             java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
             java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
             java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
-            qName = new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "DivisaR");
-            cachedSerQNames.add(qName);
-            cls = org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.DivisaR.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
-
             qName = new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "DomicilioClienteR");
             cachedSerQNames.add(qName);
             cls = org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.DomicilioClienteR.class;
@@ -1291,13 +1282,6 @@ public class SoapHttpEndpointStub extends org.apache.axis.client.Stub implements
             qName = new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "LeyendaR");
             cachedSerQNames.add(qName);
             cls = org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.LeyendaR.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
-
-            qName = new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "NombreImpuestoR");
-            cachedSerQNames.add(qName);
-            cls = org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.NombreImpuestoR.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
@@ -1785,6 +1769,11 @@ public class SoapHttpEndpointStub extends org.apache.axis.client.Stub implements
         setRequestHeaders(_call);
         setAttachments(_call);
  try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {credenciales, cfdi});
+ 
+// 		String requestXML = _call.getMessageContext().getRequestMessage().getSOAPPartAsString();
+// 		System.out.println("===== SOAP REQUEST INICIA =====");
+// 		System.out.println(requestXML);
+// 		System.out.println("===== SOAP REQUEST FIN =====");
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -1938,7 +1927,7 @@ public class SoapHttpEndpointStub extends org.apache.axis.client.Stub implements
 }
     }
 
-    public org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.RespuestaOperacionCR obtenerXMLPorUUID(org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.Credenciales crendeciales, java.lang.String uuid) throws java.rmi.RemoteException {
+    public org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.RespuestaOperacionCR obtenerXMLPorUUID(org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.Credenciales credenciales, java.lang.String uuid) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -1954,7 +1943,7 @@ public class SoapHttpEndpointStub extends org.apache.axis.client.Stub implements
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {crendeciales, uuid});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {credenciales, uuid});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;

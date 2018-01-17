@@ -8,11 +8,9 @@
 package org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios;
 
 public class AddendaCFDR  implements java.io.Serializable {
-    private java.lang.Boolean ajusteManual;
+    private java.lang.String correoAlternoCliente;
 
-    private java.lang.String claveDeCFDI;
-
-    private java.lang.Boolean combustible;
+    private java.lang.String correoCliente;
 
     private org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.DetallesConceptoR[] detallesConceptos;
 
@@ -34,35 +32,15 @@ public class AddendaCFDR  implements java.io.Serializable {
 
     private org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.FirmaOnLineR[] firmas;
 
-    private java.lang.String formaGeneracion;
-
     private java.lang.String idiomaPDF;
 
-    private org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.NombreImpuestoR[] nombreRetencionesLocales;
-
-    private org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.NombreImpuestoR[] nombresRetenciones;
-
-    private org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.NombreImpuestoR[] nombresTraslados;
-
-    private org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.NombreImpuestoR[] nombresTrasladosLocales;
+    private java.lang.String nombreComercialCliente;
 
     private org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.PagareR pagare;
 
-    private java.lang.String pagoEnParcialidades;
+    private java.lang.String telefonoCliente;
 
-    private java.math.BigDecimal porcentajeDeDescuento;
-
-    private java.math.BigDecimal subtotalAntesDeDescuento;
-
-    private java.math.BigDecimal subtotalDespuesDescuento;
-
-    private java.lang.String telefonoEmisor;
-
-    private java.lang.String telefonoEmisorSucursal;
-
-    private java.lang.String telefonoReceptor;
-
-    private java.lang.String tipoDeCfdi;
+    private java.lang.String telefonoMovilCliente;
 
     private java.lang.String tituloPersonalizado;
 
@@ -70,9 +48,8 @@ public class AddendaCFDR  implements java.io.Serializable {
     }
 
     public AddendaCFDR(
-           java.lang.Boolean ajusteManual,
-           java.lang.String claveDeCFDI,
-           java.lang.Boolean combustible,
+           java.lang.String correoAlternoCliente,
+           java.lang.String correoCliente,
            org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.DetallesConceptoR[] detallesConceptos,
            org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.DomicilioClienteR domicilioEmisor,
            org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.DomicilioClienteR domicilioReceptor,
@@ -83,25 +60,14 @@ public class AddendaCFDR  implements java.io.Serializable {
            org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.EtiquetaPersonalizadaR[] etiquetasPersonalizadas,
            java.lang.String fechaTipoDeCambio,
            org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.FirmaOnLineR[] firmas,
-           java.lang.String formaGeneracion,
            java.lang.String idiomaPDF,
-           org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.NombreImpuestoR[] nombreRetencionesLocales,
-           org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.NombreImpuestoR[] nombresRetenciones,
-           org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.NombreImpuestoR[] nombresTraslados,
-           org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.NombreImpuestoR[] nombresTrasladosLocales,
+           java.lang.String nombreComercialCliente,
            org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.PagareR pagare,
-           java.lang.String pagoEnParcialidades,
-           java.math.BigDecimal porcentajeDeDescuento,
-           java.math.BigDecimal subtotalAntesDeDescuento,
-           java.math.BigDecimal subtotalDespuesDescuento,
-           java.lang.String telefonoEmisor,
-           java.lang.String telefonoEmisorSucursal,
-           java.lang.String telefonoReceptor,
-           java.lang.String tipoDeCfdi,
+           java.lang.String telefonoCliente,
+           java.lang.String telefonoMovilCliente,
            java.lang.String tituloPersonalizado) {
-           this.ajusteManual = ajusteManual;
-           this.claveDeCFDI = claveDeCFDI;
-           this.combustible = combustible;
+           this.correoAlternoCliente = correoAlternoCliente;
+           this.correoCliente = correoCliente;
            this.detallesConceptos = detallesConceptos;
            this.domicilioEmisor = domicilioEmisor;
            this.domicilioReceptor = domicilioReceptor;
@@ -112,82 +78,52 @@ public class AddendaCFDR  implements java.io.Serializable {
            this.etiquetasPersonalizadas = etiquetasPersonalizadas;
            this.fechaTipoDeCambio = fechaTipoDeCambio;
            this.firmas = firmas;
-           this.formaGeneracion = formaGeneracion;
            this.idiomaPDF = idiomaPDF;
-           this.nombreRetencionesLocales = nombreRetencionesLocales;
-           this.nombresRetenciones = nombresRetenciones;
-           this.nombresTraslados = nombresTraslados;
-           this.nombresTrasladosLocales = nombresTrasladosLocales;
+           this.nombreComercialCliente = nombreComercialCliente;
            this.pagare = pagare;
-           this.pagoEnParcialidades = pagoEnParcialidades;
-           this.porcentajeDeDescuento = porcentajeDeDescuento;
-           this.subtotalAntesDeDescuento = subtotalAntesDeDescuento;
-           this.subtotalDespuesDescuento = subtotalDespuesDescuento;
-           this.telefonoEmisor = telefonoEmisor;
-           this.telefonoEmisorSucursal = telefonoEmisorSucursal;
-           this.telefonoReceptor = telefonoReceptor;
-           this.tipoDeCfdi = tipoDeCfdi;
+           this.telefonoCliente = telefonoCliente;
+           this.telefonoMovilCliente = telefonoMovilCliente;
            this.tituloPersonalizado = tituloPersonalizado;
     }
 
 
     /**
-     * Gets the ajusteManual value for this AddendaCFDR.
+     * Gets the correoAlternoCliente value for this AddendaCFDR.
      * 
-     * @return ajusteManual
+     * @return correoAlternoCliente
      */
-    public java.lang.Boolean getAjusteManual() {
-        return ajusteManual;
+    public java.lang.String getCorreoAlternoCliente() {
+        return correoAlternoCliente;
     }
 
 
     /**
-     * Sets the ajusteManual value for this AddendaCFDR.
+     * Sets the correoAlternoCliente value for this AddendaCFDR.
      * 
-     * @param ajusteManual
+     * @param correoAlternoCliente
      */
-    public void setAjusteManual(java.lang.Boolean ajusteManual) {
-        this.ajusteManual = ajusteManual;
+    public void setCorreoAlternoCliente(java.lang.String correoAlternoCliente) {
+        this.correoAlternoCliente = correoAlternoCliente;
     }
 
 
     /**
-     * Gets the claveDeCFDI value for this AddendaCFDR.
+     * Gets the correoCliente value for this AddendaCFDR.
      * 
-     * @return claveDeCFDI
+     * @return correoCliente
      */
-    public java.lang.String getClaveDeCFDI() {
-        return claveDeCFDI;
+    public java.lang.String getCorreoCliente() {
+        return correoCliente;
     }
 
 
     /**
-     * Sets the claveDeCFDI value for this AddendaCFDR.
+     * Sets the correoCliente value for this AddendaCFDR.
      * 
-     * @param claveDeCFDI
+     * @param correoCliente
      */
-    public void setClaveDeCFDI(java.lang.String claveDeCFDI) {
-        this.claveDeCFDI = claveDeCFDI;
-    }
-
-
-    /**
-     * Gets the combustible value for this AddendaCFDR.
-     * 
-     * @return combustible
-     */
-    public java.lang.Boolean getCombustible() {
-        return combustible;
-    }
-
-
-    /**
-     * Sets the combustible value for this AddendaCFDR.
-     * 
-     * @param combustible
-     */
-    public void setCombustible(java.lang.Boolean combustible) {
-        this.combustible = combustible;
+    public void setCorreoCliente(java.lang.String correoCliente) {
+        this.correoCliente = correoCliente;
     }
 
 
@@ -392,26 +328,6 @@ public class AddendaCFDR  implements java.io.Serializable {
 
 
     /**
-     * Gets the formaGeneracion value for this AddendaCFDR.
-     * 
-     * @return formaGeneracion
-     */
-    public java.lang.String getFormaGeneracion() {
-        return formaGeneracion;
-    }
-
-
-    /**
-     * Sets the formaGeneracion value for this AddendaCFDR.
-     * 
-     * @param formaGeneracion
-     */
-    public void setFormaGeneracion(java.lang.String formaGeneracion) {
-        this.formaGeneracion = formaGeneracion;
-    }
-
-
-    /**
      * Gets the idiomaPDF value for this AddendaCFDR.
      * 
      * @return idiomaPDF
@@ -432,82 +348,22 @@ public class AddendaCFDR  implements java.io.Serializable {
 
 
     /**
-     * Gets the nombreRetencionesLocales value for this AddendaCFDR.
+     * Gets the nombreComercialCliente value for this AddendaCFDR.
      * 
-     * @return nombreRetencionesLocales
+     * @return nombreComercialCliente
      */
-    public org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.NombreImpuestoR[] getNombreRetencionesLocales() {
-        return nombreRetencionesLocales;
+    public java.lang.String getNombreComercialCliente() {
+        return nombreComercialCliente;
     }
 
 
     /**
-     * Sets the nombreRetencionesLocales value for this AddendaCFDR.
+     * Sets the nombreComercialCliente value for this AddendaCFDR.
      * 
-     * @param nombreRetencionesLocales
+     * @param nombreComercialCliente
      */
-    public void setNombreRetencionesLocales(org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.NombreImpuestoR[] nombreRetencionesLocales) {
-        this.nombreRetencionesLocales = nombreRetencionesLocales;
-    }
-
-
-    /**
-     * Gets the nombresRetenciones value for this AddendaCFDR.
-     * 
-     * @return nombresRetenciones
-     */
-    public org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.NombreImpuestoR[] getNombresRetenciones() {
-        return nombresRetenciones;
-    }
-
-
-    /**
-     * Sets the nombresRetenciones value for this AddendaCFDR.
-     * 
-     * @param nombresRetenciones
-     */
-    public void setNombresRetenciones(org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.NombreImpuestoR[] nombresRetenciones) {
-        this.nombresRetenciones = nombresRetenciones;
-    }
-
-
-    /**
-     * Gets the nombresTraslados value for this AddendaCFDR.
-     * 
-     * @return nombresTraslados
-     */
-    public org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.NombreImpuestoR[] getNombresTraslados() {
-        return nombresTraslados;
-    }
-
-
-    /**
-     * Sets the nombresTraslados value for this AddendaCFDR.
-     * 
-     * @param nombresTraslados
-     */
-    public void setNombresTraslados(org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.NombreImpuestoR[] nombresTraslados) {
-        this.nombresTraslados = nombresTraslados;
-    }
-
-
-    /**
-     * Gets the nombresTrasladosLocales value for this AddendaCFDR.
-     * 
-     * @return nombresTrasladosLocales
-     */
-    public org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.NombreImpuestoR[] getNombresTrasladosLocales() {
-        return nombresTrasladosLocales;
-    }
-
-
-    /**
-     * Sets the nombresTrasladosLocales value for this AddendaCFDR.
-     * 
-     * @param nombresTrasladosLocales
-     */
-    public void setNombresTrasladosLocales(org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.NombreImpuestoR[] nombresTrasladosLocales) {
-        this.nombresTrasladosLocales = nombresTrasladosLocales;
+    public void setNombreComercialCliente(java.lang.String nombreComercialCliente) {
+        this.nombreComercialCliente = nombreComercialCliente;
     }
 
 
@@ -532,162 +388,42 @@ public class AddendaCFDR  implements java.io.Serializable {
 
 
     /**
-     * Gets the pagoEnParcialidades value for this AddendaCFDR.
+     * Gets the telefonoCliente value for this AddendaCFDR.
      * 
-     * @return pagoEnParcialidades
+     * @return telefonoCliente
      */
-    public java.lang.String getPagoEnParcialidades() {
-        return pagoEnParcialidades;
+    public java.lang.String getTelefonoCliente() {
+        return telefonoCliente;
     }
 
 
     /**
-     * Sets the pagoEnParcialidades value for this AddendaCFDR.
+     * Sets the telefonoCliente value for this AddendaCFDR.
      * 
-     * @param pagoEnParcialidades
+     * @param telefonoCliente
      */
-    public void setPagoEnParcialidades(java.lang.String pagoEnParcialidades) {
-        this.pagoEnParcialidades = pagoEnParcialidades;
+    public void setTelefonoCliente(java.lang.String telefonoCliente) {
+        this.telefonoCliente = telefonoCliente;
     }
 
 
     /**
-     * Gets the porcentajeDeDescuento value for this AddendaCFDR.
+     * Gets the telefonoMovilCliente value for this AddendaCFDR.
      * 
-     * @return porcentajeDeDescuento
+     * @return telefonoMovilCliente
      */
-    public java.math.BigDecimal getPorcentajeDeDescuento() {
-        return porcentajeDeDescuento;
+    public java.lang.String getTelefonoMovilCliente() {
+        return telefonoMovilCliente;
     }
 
 
     /**
-     * Sets the porcentajeDeDescuento value for this AddendaCFDR.
+     * Sets the telefonoMovilCliente value for this AddendaCFDR.
      * 
-     * @param porcentajeDeDescuento
+     * @param telefonoMovilCliente
      */
-    public void setPorcentajeDeDescuento(java.math.BigDecimal porcentajeDeDescuento) {
-        this.porcentajeDeDescuento = porcentajeDeDescuento;
-    }
-
-
-    /**
-     * Gets the subtotalAntesDeDescuento value for this AddendaCFDR.
-     * 
-     * @return subtotalAntesDeDescuento
-     */
-    public java.math.BigDecimal getSubtotalAntesDeDescuento() {
-        return subtotalAntesDeDescuento;
-    }
-
-
-    /**
-     * Sets the subtotalAntesDeDescuento value for this AddendaCFDR.
-     * 
-     * @param subtotalAntesDeDescuento
-     */
-    public void setSubtotalAntesDeDescuento(java.math.BigDecimal subtotalAntesDeDescuento) {
-        this.subtotalAntesDeDescuento = subtotalAntesDeDescuento;
-    }
-
-
-    /**
-     * Gets the subtotalDespuesDescuento value for this AddendaCFDR.
-     * 
-     * @return subtotalDespuesDescuento
-     */
-    public java.math.BigDecimal getSubtotalDespuesDescuento() {
-        return subtotalDespuesDescuento;
-    }
-
-
-    /**
-     * Sets the subtotalDespuesDescuento value for this AddendaCFDR.
-     * 
-     * @param subtotalDespuesDescuento
-     */
-    public void setSubtotalDespuesDescuento(java.math.BigDecimal subtotalDespuesDescuento) {
-        this.subtotalDespuesDescuento = subtotalDespuesDescuento;
-    }
-
-
-    /**
-     * Gets the telefonoEmisor value for this AddendaCFDR.
-     * 
-     * @return telefonoEmisor
-     */
-    public java.lang.String getTelefonoEmisor() {
-        return telefonoEmisor;
-    }
-
-
-    /**
-     * Sets the telefonoEmisor value for this AddendaCFDR.
-     * 
-     * @param telefonoEmisor
-     */
-    public void setTelefonoEmisor(java.lang.String telefonoEmisor) {
-        this.telefonoEmisor = telefonoEmisor;
-    }
-
-
-    /**
-     * Gets the telefonoEmisorSucursal value for this AddendaCFDR.
-     * 
-     * @return telefonoEmisorSucursal
-     */
-    public java.lang.String getTelefonoEmisorSucursal() {
-        return telefonoEmisorSucursal;
-    }
-
-
-    /**
-     * Sets the telefonoEmisorSucursal value for this AddendaCFDR.
-     * 
-     * @param telefonoEmisorSucursal
-     */
-    public void setTelefonoEmisorSucursal(java.lang.String telefonoEmisorSucursal) {
-        this.telefonoEmisorSucursal = telefonoEmisorSucursal;
-    }
-
-
-    /**
-     * Gets the telefonoReceptor value for this AddendaCFDR.
-     * 
-     * @return telefonoReceptor
-     */
-    public java.lang.String getTelefonoReceptor() {
-        return telefonoReceptor;
-    }
-
-
-    /**
-     * Sets the telefonoReceptor value for this AddendaCFDR.
-     * 
-     * @param telefonoReceptor
-     */
-    public void setTelefonoReceptor(java.lang.String telefonoReceptor) {
-        this.telefonoReceptor = telefonoReceptor;
-    }
-
-
-    /**
-     * Gets the tipoDeCfdi value for this AddendaCFDR.
-     * 
-     * @return tipoDeCfdi
-     */
-    public java.lang.String getTipoDeCfdi() {
-        return tipoDeCfdi;
-    }
-
-
-    /**
-     * Sets the tipoDeCfdi value for this AddendaCFDR.
-     * 
-     * @param tipoDeCfdi
-     */
-    public void setTipoDeCfdi(java.lang.String tipoDeCfdi) {
-        this.tipoDeCfdi = tipoDeCfdi;
+    public void setTelefonoMovilCliente(java.lang.String telefonoMovilCliente) {
+        this.telefonoMovilCliente = telefonoMovilCliente;
     }
 
 
@@ -722,15 +458,12 @@ public class AddendaCFDR  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true && 
-            ((this.ajusteManual==null && other.getAjusteManual()==null) || 
-             (this.ajusteManual!=null &&
-              this.ajusteManual.equals(other.getAjusteManual()))) &&
-            ((this.claveDeCFDI==null && other.getClaveDeCFDI()==null) || 
-             (this.claveDeCFDI!=null &&
-              this.claveDeCFDI.equals(other.getClaveDeCFDI()))) &&
-            ((this.combustible==null && other.getCombustible()==null) || 
-             (this.combustible!=null &&
-              this.combustible.equals(other.getCombustible()))) &&
+            ((this.correoAlternoCliente==null && other.getCorreoAlternoCliente()==null) || 
+             (this.correoAlternoCliente!=null &&
+              this.correoAlternoCliente.equals(other.getCorreoAlternoCliente()))) &&
+            ((this.correoCliente==null && other.getCorreoCliente()==null) || 
+             (this.correoCliente!=null &&
+              this.correoCliente.equals(other.getCorreoCliente()))) &&
             ((this.detallesConceptos==null && other.getDetallesConceptos()==null) || 
              (this.detallesConceptos!=null &&
               java.util.Arrays.equals(this.detallesConceptos, other.getDetallesConceptos()))) &&
@@ -761,51 +494,21 @@ public class AddendaCFDR  implements java.io.Serializable {
             ((this.firmas==null && other.getFirmas()==null) || 
              (this.firmas!=null &&
               java.util.Arrays.equals(this.firmas, other.getFirmas()))) &&
-            ((this.formaGeneracion==null && other.getFormaGeneracion()==null) || 
-             (this.formaGeneracion!=null &&
-              this.formaGeneracion.equals(other.getFormaGeneracion()))) &&
             ((this.idiomaPDF==null && other.getIdiomaPDF()==null) || 
              (this.idiomaPDF!=null &&
               this.idiomaPDF.equals(other.getIdiomaPDF()))) &&
-            ((this.nombreRetencionesLocales==null && other.getNombreRetencionesLocales()==null) || 
-             (this.nombreRetencionesLocales!=null &&
-              java.util.Arrays.equals(this.nombreRetencionesLocales, other.getNombreRetencionesLocales()))) &&
-            ((this.nombresRetenciones==null && other.getNombresRetenciones()==null) || 
-             (this.nombresRetenciones!=null &&
-              java.util.Arrays.equals(this.nombresRetenciones, other.getNombresRetenciones()))) &&
-            ((this.nombresTraslados==null && other.getNombresTraslados()==null) || 
-             (this.nombresTraslados!=null &&
-              java.util.Arrays.equals(this.nombresTraslados, other.getNombresTraslados()))) &&
-            ((this.nombresTrasladosLocales==null && other.getNombresTrasladosLocales()==null) || 
-             (this.nombresTrasladosLocales!=null &&
-              java.util.Arrays.equals(this.nombresTrasladosLocales, other.getNombresTrasladosLocales()))) &&
+            ((this.nombreComercialCliente==null && other.getNombreComercialCliente()==null) || 
+             (this.nombreComercialCliente!=null &&
+              this.nombreComercialCliente.equals(other.getNombreComercialCliente()))) &&
             ((this.pagare==null && other.getPagare()==null) || 
              (this.pagare!=null &&
               this.pagare.equals(other.getPagare()))) &&
-            ((this.pagoEnParcialidades==null && other.getPagoEnParcialidades()==null) || 
-             (this.pagoEnParcialidades!=null &&
-              this.pagoEnParcialidades.equals(other.getPagoEnParcialidades()))) &&
-            ((this.porcentajeDeDescuento==null && other.getPorcentajeDeDescuento()==null) || 
-             (this.porcentajeDeDescuento!=null &&
-              this.porcentajeDeDescuento.equals(other.getPorcentajeDeDescuento()))) &&
-            ((this.subtotalAntesDeDescuento==null && other.getSubtotalAntesDeDescuento()==null) || 
-             (this.subtotalAntesDeDescuento!=null &&
-              this.subtotalAntesDeDescuento.equals(other.getSubtotalAntesDeDescuento()))) &&
-            ((this.subtotalDespuesDescuento==null && other.getSubtotalDespuesDescuento()==null) || 
-             (this.subtotalDespuesDescuento!=null &&
-              this.subtotalDespuesDescuento.equals(other.getSubtotalDespuesDescuento()))) &&
-            ((this.telefonoEmisor==null && other.getTelefonoEmisor()==null) || 
-             (this.telefonoEmisor!=null &&
-              this.telefonoEmisor.equals(other.getTelefonoEmisor()))) &&
-            ((this.telefonoEmisorSucursal==null && other.getTelefonoEmisorSucursal()==null) || 
-             (this.telefonoEmisorSucursal!=null &&
-              this.telefonoEmisorSucursal.equals(other.getTelefonoEmisorSucursal()))) &&
-            ((this.telefonoReceptor==null && other.getTelefonoReceptor()==null) || 
-             (this.telefonoReceptor!=null &&
-              this.telefonoReceptor.equals(other.getTelefonoReceptor()))) &&
-            ((this.tipoDeCfdi==null && other.getTipoDeCfdi()==null) || 
-             (this.tipoDeCfdi!=null &&
-              this.tipoDeCfdi.equals(other.getTipoDeCfdi()))) &&
+            ((this.telefonoCliente==null && other.getTelefonoCliente()==null) || 
+             (this.telefonoCliente!=null &&
+              this.telefonoCliente.equals(other.getTelefonoCliente()))) &&
+            ((this.telefonoMovilCliente==null && other.getTelefonoMovilCliente()==null) || 
+             (this.telefonoMovilCliente!=null &&
+              this.telefonoMovilCliente.equals(other.getTelefonoMovilCliente()))) &&
             ((this.tituloPersonalizado==null && other.getTituloPersonalizado()==null) || 
              (this.tituloPersonalizado!=null &&
               this.tituloPersonalizado.equals(other.getTituloPersonalizado())));
@@ -820,14 +523,11 @@ public class AddendaCFDR  implements java.io.Serializable {
         }
         __hashCodeCalc = true;
         int _hashCode = 1;
-        if (getAjusteManual() != null) {
-            _hashCode += getAjusteManual().hashCode();
+        if (getCorreoAlternoCliente() != null) {
+            _hashCode += getCorreoAlternoCliente().hashCode();
         }
-        if (getClaveDeCFDI() != null) {
-            _hashCode += getClaveDeCFDI().hashCode();
-        }
-        if (getCombustible() != null) {
-            _hashCode += getCombustible().hashCode();
+        if (getCorreoCliente() != null) {
+            _hashCode += getCorreoCliente().hashCode();
         }
         if (getDetallesConceptos() != null) {
             for (int i=0;
@@ -883,82 +583,20 @@ public class AddendaCFDR  implements java.io.Serializable {
                 }
             }
         }
-        if (getFormaGeneracion() != null) {
-            _hashCode += getFormaGeneracion().hashCode();
-        }
         if (getIdiomaPDF() != null) {
             _hashCode += getIdiomaPDF().hashCode();
         }
-        if (getNombreRetencionesLocales() != null) {
-            for (int i=0;
-                 i<java.lang.reflect.Array.getLength(getNombreRetencionesLocales());
-                 i++) {
-                java.lang.Object obj = java.lang.reflect.Array.get(getNombreRetencionesLocales(), i);
-                if (obj != null &&
-                    !obj.getClass().isArray()) {
-                    _hashCode += obj.hashCode();
-                }
-            }
-        }
-        if (getNombresRetenciones() != null) {
-            for (int i=0;
-                 i<java.lang.reflect.Array.getLength(getNombresRetenciones());
-                 i++) {
-                java.lang.Object obj = java.lang.reflect.Array.get(getNombresRetenciones(), i);
-                if (obj != null &&
-                    !obj.getClass().isArray()) {
-                    _hashCode += obj.hashCode();
-                }
-            }
-        }
-        if (getNombresTraslados() != null) {
-            for (int i=0;
-                 i<java.lang.reflect.Array.getLength(getNombresTraslados());
-                 i++) {
-                java.lang.Object obj = java.lang.reflect.Array.get(getNombresTraslados(), i);
-                if (obj != null &&
-                    !obj.getClass().isArray()) {
-                    _hashCode += obj.hashCode();
-                }
-            }
-        }
-        if (getNombresTrasladosLocales() != null) {
-            for (int i=0;
-                 i<java.lang.reflect.Array.getLength(getNombresTrasladosLocales());
-                 i++) {
-                java.lang.Object obj = java.lang.reflect.Array.get(getNombresTrasladosLocales(), i);
-                if (obj != null &&
-                    !obj.getClass().isArray()) {
-                    _hashCode += obj.hashCode();
-                }
-            }
+        if (getNombreComercialCliente() != null) {
+            _hashCode += getNombreComercialCliente().hashCode();
         }
         if (getPagare() != null) {
             _hashCode += getPagare().hashCode();
         }
-        if (getPagoEnParcialidades() != null) {
-            _hashCode += getPagoEnParcialidades().hashCode();
+        if (getTelefonoCliente() != null) {
+            _hashCode += getTelefonoCliente().hashCode();
         }
-        if (getPorcentajeDeDescuento() != null) {
-            _hashCode += getPorcentajeDeDescuento().hashCode();
-        }
-        if (getSubtotalAntesDeDescuento() != null) {
-            _hashCode += getSubtotalAntesDeDescuento().hashCode();
-        }
-        if (getSubtotalDespuesDescuento() != null) {
-            _hashCode += getSubtotalDespuesDescuento().hashCode();
-        }
-        if (getTelefonoEmisor() != null) {
-            _hashCode += getTelefonoEmisor().hashCode();
-        }
-        if (getTelefonoEmisorSucursal() != null) {
-            _hashCode += getTelefonoEmisorSucursal().hashCode();
-        }
-        if (getTelefonoReceptor() != null) {
-            _hashCode += getTelefonoReceptor().hashCode();
-        }
-        if (getTipoDeCfdi() != null) {
-            _hashCode += getTipoDeCfdi().hashCode();
+        if (getTelefonoMovilCliente() != null) {
+            _hashCode += getTelefonoMovilCliente().hashCode();
         }
         if (getTituloPersonalizado() != null) {
             _hashCode += getTituloPersonalizado().hashCode();
@@ -974,25 +612,18 @@ public class AddendaCFDR  implements java.io.Serializable {
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "AddendaCFDR"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("ajusteManual");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "AjusteManual"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("claveDeCFDI");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "ClaveDeCFDI"));
+        elemField.setFieldName("correoAlternoCliente");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "CorreoAlternoCliente"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("combustible");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "Combustible"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
+        elemField.setFieldName("correoCliente");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "CorreoCliente"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
-        elemField.setNillable(false);
+        elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("detallesConceptos");
@@ -1068,13 +699,6 @@ public class AddendaCFDR  implements java.io.Serializable {
         elemField.setItemQName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "FirmaOnLineR"));
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("formaGeneracion");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "FormaGeneracion"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(true);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("idiomaPDF");
         elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "IdiomaPDF"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
@@ -1082,36 +706,11 @@ public class AddendaCFDR  implements java.io.Serializable {
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("nombreRetencionesLocales");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "NombreRetencionesLocales"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "NombreImpuestoR"));
+        elemField.setFieldName("nombreComercialCliente");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "NombreComercialCliente"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(true);
-        elemField.setItemQName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "NombreImpuestoR"));
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("nombresRetenciones");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "NombresRetenciones"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "NombreImpuestoR"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(true);
-        elemField.setItemQName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "NombreImpuestoR"));
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("nombresTraslados");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "NombresTraslados"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "NombreImpuestoR"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(true);
-        elemField.setItemQName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "NombreImpuestoR"));
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("nombresTrasladosLocales");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "NombresTrasladosLocales"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "NombreImpuestoR"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(true);
-        elemField.setItemQName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "NombreImpuestoR"));
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("pagare");
@@ -1121,57 +720,15 @@ public class AddendaCFDR  implements java.io.Serializable {
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("pagoEnParcialidades");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "PagoEnParcialidades"));
+        elemField.setFieldName("telefonoCliente");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "TelefonoCliente"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("porcentajeDeDescuento");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "PorcentajeDeDescuento"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "decimal"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("subtotalAntesDeDescuento");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "SubtotalAntesDeDescuento"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "decimal"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("subtotalDespuesDescuento");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "SubtotalDespuesDescuento"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "decimal"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("telefonoEmisor");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "TelefonoEmisor"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(true);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("telefonoEmisorSucursal");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "TelefonoEmisorSucursal"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(true);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("telefonoReceptor");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "TelefonoReceptor"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(true);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("tipoDeCfdi");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "TipoDeCfdi"));
+        elemField.setFieldName("telefonoMovilCliente");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/TES.V33.CFDI.Negocios", "TelefonoMovilCliente"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(true);

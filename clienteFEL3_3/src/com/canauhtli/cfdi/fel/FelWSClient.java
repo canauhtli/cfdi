@@ -15,20 +15,34 @@ import javax.xml.rpc.ServiceException;
 import org.apache.commons.lang3.StringUtils;
 import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.CfdiRelacionadoR;
 import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.CfdiRelacionadosR;
+import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.CompensacionSaldosAFavorR;
 import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.Comprobante33R;
 import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.ConceptoR;
 import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.Credenciales;
+import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.DeduccionNomina12R;
+import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.DeduccionesNomina12R;
+import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.EmisorNomina12R;
 import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.EmisorR;
+import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.HorasExtra12R;
 import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.ImpuestosConceptoR;
+import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.IncapacidadNomina12R;
+import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.JubilacionPensionRetiroR;
+import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.Nomina12R;
+import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.OtroPagoNomina12R;
 import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.Pagos10R;
 import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.PagosPagoDoctoRelacionadoR;
 import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.PagosPagoImpuestosR;
 import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.PagosPagoImpuestosRetencionR;
 import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.PagosPagoImpuestosTrasladoR;
 import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.PagosPagoR;
+import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.Percepcion12R;
+import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.PercepcionesNomina12R;
+import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.ReceptorNomina12R;
 import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.ReceptorR;
 import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.RespuestaOperacionCR;
 import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.RetencionConceptoR;
+import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.SeparacionIndemnizacionR;
+import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.SubsidioAlEmpleoR;
 import org.datacontract.schemas._2004._07.TES_V33_CFDI_Negocios.TrasladoConceptoR;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,11 +55,18 @@ import com.canauhtli.cfdi.pac.ComprobanteFiscal;
 import com.canauhtli.cfdi.pac.bean.Concepto;
 import com.canauhtli.cfdi.pac.bean.DocumentoRelacionado;
 import com.canauhtli.cfdi.pac.bean.Entidad;
+import com.canauhtli.cfdi.pac.bean.HoraExtra;
 import com.canauhtli.cfdi.pac.bean.ImpuestoConcepto;
 import com.canauhtli.cfdi.pac.bean.ImpuestoPago;
+import com.canauhtli.cfdi.pac.bean.Incapacidad;
+import com.canauhtli.cfdi.pac.bean.Nomina;
+import com.canauhtli.cfdi.pac.bean.OtroPago;
 import com.canauhtli.cfdi.pac.bean.Pago;
+import com.canauhtli.cfdi.pac.bean.Percepcion;
 import com.canauhtli.cfdi.pac.bean.Relacionados;
 import com.canauhtli.cfdi.pac.types.TipoCFD;
+import com.canauhtli.cfdi.pac.types.TipoDeduccion;
+import com.canauhtli.cfdi.pac.types.TipoPercepcion;
 
 public class FelWSClient extends ClienteServicio {
 
@@ -88,6 +109,10 @@ public class FelWSClient extends ClienteServicio {
 			comprobante.setPagos(llenarPagos(cf.getPagos()));
 		}
 		
+		if (TipoCFD.NOMINA == cf.getTipo()) {
+			comprobante.setNomina(llenarNomina(cf.getNomina(), cf.getEmisor().getRegistroPatronal()));
+		}
+		
 		try {
 			RespuestaOperacionCR response = felws.generarCFDI(credenciales, comprobante);
 			if (response.getOperacionExitosa()) {
@@ -97,7 +122,7 @@ public class FelWSClient extends ClienteServicio {
 				log.error("{}", response.getErrorDetallado());
 				throw new ClientePACException(response.getErrorGeneral());
 			}
-			log.info("CodigoConfirmacion: " + response.getCodigoConfirmacion());
+			log.info("CodigoConfirmacion: " + response.getFolioGenerado());
 		} catch (RemoteException e) {
 			log.error("No pude generar el CFDI para {}", cf.getReceptor().getRfc(), e);
 			throw new ClientePACException(e.getMessage());
@@ -118,42 +143,42 @@ public class FelWSClient extends ClienteServicio {
 	}
 
 	/**
-	 * Tomado de la documentación de FEL
+	 * Tomado de la documentaciï¿½n de FEL
 	 * 
-	 * ClaveCFDI (R) -	FAC	Para el caso de emisión de Factura. Función fiscal: Ingreso.
-	 * 					HON	Para el caso de emisión de Recibo de Honorarios. Función fiscal: Ingreso.
-	 * 					ARR	Para el caso de emisión de Recibo de Arrendamiento. Función fiscal: Ingreso.
-	 *			 		PAG	Para el caso de emisión de Recibo de Pago. Función fiscal: Ingreso.
-	 *					CAR	Para el caso de emisión de Nota de Cargo. Función fiscal: Ingreso.
-	 *					CRE	Para el caso de emisión de Nota de Crédito. Función fiscal: Egreso.
-	 *					DEV	Para el caso de emisión de Nota de Devolución. Función fiscal: Egreso.
-	 *					POR	Para el caso de emisión de Carta Porte. Función fiscal: Traslado.
-	 *					DON	Para el caso de emisión de Donatarias. Función fiscal: Egreso.
-	 *					NOM12	Para el caso de emisión de Nomina. Funcion fiscal: Egreso
-	 *					CPI	Para el caso de emisión de Carta Porte. Función fiscal: Ingreso.
-	 *					ING	Para el caso de emisión de Recibo de Ingreso. Función fiscal: Ingreso.
-	 *					CPA	Para el caso de emisión de Complemento de Pagos. Función fiscal: Ingreso.
+	 * ClaveCFDI (R) -	FAC	Para el caso de emisiï¿½n de Factura. Funciï¿½n fiscal: Ingreso.
+	 * 					HON	Para el caso de emisiï¿½n de Recibo de Honorarios. Funciï¿½n fiscal: Ingreso.
+	 * 					ARR	Para el caso de emisiï¿½n de Recibo de Arrendamiento. Funciï¿½n fiscal: Ingreso.
+	 *			 		PAG	Para el caso de emisiï¿½n de Recibo de Pago. Funciï¿½n fiscal: Ingreso.
+	 *					CAR	Para el caso de emisiï¿½n de Nota de Cargo. Funciï¿½n fiscal: Ingreso.
+	 *					CRE	Para el caso de emisiï¿½n de Nota de Crï¿½dito. Funciï¿½n fiscal: Egreso.
+	 *					DEV	Para el caso de emisiï¿½n de Nota de Devoluciï¿½n. Funciï¿½n fiscal: Egreso.
+	 *					POR	Para el caso de emisiï¿½n de Carta Porte. Funciï¿½n fiscal: Traslado.
+	 *					DON	Para el caso de emisiï¿½n de Donatarias. Funciï¿½n fiscal: Egreso.
+	 *					NOM12	Para el caso de emisiï¿½n de Nomina. Funcion fiscal: Egreso
+	 *					CPI	Para el caso de emisiï¿½n de Carta Porte. Funciï¿½n fiscal: Ingreso.
+	 *					ING	Para el caso de emisiï¿½n de Recibo de Ingreso. Funciï¿½n fiscal: Ingreso.
+	 *					CPA	Para el caso de emisiï¿½n de Complemento de Pagos. Funciï¿½n fiscal: Ingreso.
 	 *
 	 * CondicionesDePago (O) - Leyenda que indique las condiciones de pago.
 	 *	
-	 * Fecha (O) - [YYYY-MM-DDTHH:mm:SS] Parámetro para cambiar la fecha de emisión del CFDI,
-	 * 			   máximo 24 horas previas a la actual.
+	 * Fecha (O) - [YYYY-MM-DDTHH:mm:SS] Parï¿½metro para cambiar la fecha de emisiï¿½n del CFDI,
+	 * 			   mï¿½ximo 24 horas previas a la actual.
 	 *
-	 * Folio (O) - Parámetro para declarar un Folio para el CFDI.
+	 * Folio (O) - Parï¿½metro para declarar un Folio para el CFDI.
 	 *
-	 * FormaDePago	(R) - Pago en una sola exhibición	Leyenda que deberá ir como forma de pago.
-	 *					  Parcialidades	Leyenda que deberá ir como forma de pago en caso de parcialidades.  En este caso deberá incluirse la variable "Parcialidades 1/3" por ejemplo.
+	 * FormaDePago	(R) - Pago en una sola exhibiciï¿½n	Leyenda que deberï¿½ ir como forma de pago.
+	 *					  Parcialidades	Leyenda que deberï¿½ ir como forma de pago en caso de parcialidades.  En este caso deberï¿½ incluirse la variable "Parcialidades 1/3" por ejemplo.
 	 *		
 	 * LugarExpedicion	(R) - El lugar donde fue Expedido el CFDI.
 	 *
-	 * MetodoDePago	(R) - Leyenda que indica el método de pago utilizado de acuerdo al Catálogo del SAT. [c_FormaPago]
-	 *					  Si desea agregar más de un método de pago, deberá colocarlo separado por comas y en orden de mayor a menor importe, por ejemplo (01,02,03).
+	 * MetodoDePago	(R) - Leyenda que indica el mï¿½todo de pago utilizado de acuerdo al Catï¿½logo del SAT. [c_FormaPago]
+	 *					  Si desea agregar mï¿½s de un mï¿½todo de pago, deberï¿½ colocarlo separado por comas y en orden de mayor a menor importe, por ejemplo (01,02,03).
 	 *
 	 * Moneda (R) - Indicador del tipo de moneda utilizada en el CFDI. [c_Moneda]
 	 *	
-	 * Referencia (R) - Código único para referenciar el comprobante a timbrar.
+	 * Referencia (R) - Cï¿½digo ï¿½nico para referenciar el comprobante a timbrar.
 	 *		
-	 * Serie (O) - Parámetro para declarar la Serie del CFDI.
+	 * Serie (O) - Parï¿½metro para declarar la Serie del CFDI.
 	 *		
 	 * SubTotal	(R) - Cifra decimal que representa el subtotal del CFDI. Ejemplo: 10540.55
 	 *		
@@ -162,7 +187,7 @@ public class FelWSClient extends ClienteServicio {
 	 * R: Requerido
 	 * O: Opcional
 	 * 
-	 * @param comprobante Elemento de FEL con la información del comprobante.
+	 * @param comprobante Elemento de FEL con la informaciï¿½n del comprobante.
 	 * @param cf Datos origen.
 	 */
 	private void llenaEncabezado(Comprobante33R comprobante, ComprobanteFiscal cf) {
@@ -192,7 +217,11 @@ public class FelWSClient extends ClienteServicio {
 		comprobante.setLugarExpedicion(cf.getEmisor().getDireccion().getCp());
 		comprobante.setMetodoPago(cf.getMetodoPago());
 		comprobante.setMoneda(cf.getMoneda());
-		comprobante.setTipoCambio(new BigDecimal(cf.getTipoCambio()).setScale(2, RoundingMode.HALF_UP));
+		if ("MXN".equalsIgnoreCase(cf.getMoneda())) {
+			comprobante.setTipoCambio(BigDecimal.ONE);
+		} else {
+			comprobante.setTipoCambio(new BigDecimal(cf.getTipoCambio()).setScale(2, RoundingMode.HALF_UP));
+		}
 		comprobante.setReferencia(""); // TODO definir, por ejemplo el nombre del archivo y agregar el campo correspondiente
 		comprobante.setSerie(cf.getSerie());
 		comprobante.setSubTotal(new BigDecimal(cf.getSubTotal()).setScale(2, RoundingMode.HALF_UP));
@@ -201,11 +230,11 @@ public class FelWSClient extends ClienteServicio {
 	}
 	
 	/**
-	 * Tomado de la documentación de FEL
+	 * Tomado de la documentaciï¿½n de FEL
 	 * 
-	 * Nombre (R) - El nombre comercial del usuario Emisor, que se mostrará en el comprobante a emitir.
+	 * Nombre (R) - El nombre comercial del usuario Emisor, que se mostrarï¿½ en el comprobante a emitir.
 	 * 
-	 * Régimen Fiscal (R) - Valor del catálogo c_tipoRegimen que otorga el SAT para declarar el Régimen Fiscal
+	 * Rï¿½gimen Fiscal (R) - Valor del catï¿½logo c_tipoRegimen que otorga el SAT para declarar el Rï¿½gimen Fiscal
 	 * 						del Emisor del comprobante. [c_tipoRegimen]
 	 * 
 	 * R: Requerido
@@ -222,22 +251,22 @@ public class FelWSClient extends ClienteServicio {
 	}
 	
 	/**
-	 * Tomado de la documentación de FEL
+	 * Tomado de la documentaciï¿½n de FEL
 	 * 
-	 * Nombre (R) - El nombre comercial (arbitrario) de su cliente, el cual será el receptor del CFDI a emitirse.
-	 * 				La información que se proporcione sobre el receptor será actualizada al instante siempre que el
-	 * 				cliente mencionado ya exista en la base de datos, en caso contrario será dado de alta como nuevo cliente.
+	 * Nombre (R) - El nombre comercial (arbitrario) de su cliente, el cual serï¿½ el receptor del CFDI a emitirse.
+	 * 				La informaciï¿½n que se proporcione sobre el receptor serï¿½ actualizada al instante siempre que el
+	 * 				cliente mencionado ya exista en la base de datos, en caso contrario serï¿½ dado de alta como nuevo cliente.
 	 * 				Esto a nivel interno de su cuenta en FEL.
 	 * 
-	 * NumRegIDTrib (O) - Si utiliza el complemento de Comercio Exterior, deberá declarar este valor correspondiente 
-	 * 					  al Identificador de Exportación.
+	 * NumRegIDTrib (O) - Si utiliza el complemento de Comercio Exterior, deberï¿½ declarar este valor correspondiente 
+	 * 					  al Identificador de Exportaciï¿½n.
 	 * 
-	 * ResidenciaFiscal (O) - Si utiliza el complemento de Comercio Exterior, deberá declarar el valor correspondiente
+	 * ResidenciaFiscal (O) - Si utiliza el complemento de Comercio Exterior, deberï¿½ declarar el valor correspondiente
 	 * 						  a la Residencia Fiscal. [c_Pais]
 	 * 
-	 * Rfc (R) - El RFC del Receptor del CFDI. Será validado de acuerdo a una expresión regular de formato correcto de RFC.
+	 * Rfc (R) - El RFC del Receptor del CFDI. Serï¿½ validado de acuerdo a una expresiï¿½n regular de formato correcto de RFC.
 	 * 
-	 * UsoCFDI (R) - Paramétro para declarar el uso que se le dará al CFDI. [c_UsoCFDI]
+	 * UsoCFDI (R) - Paramï¿½tro para declarar el uso que se le darï¿½ al CFDI. [c_UsoCFDI]
 	 * 
 	 * R: Requerido
 	 * O: Opcional
@@ -256,15 +285,15 @@ public class FelWSClient extends ClienteServicio {
 	}
 	
 	/**
-	 * Tomado de la documentación de FEL
+	 * Tomado de la documentaciï¿½n de FEL
 	 * 
 	 * cantidad (R) - Cantidad del concepto
 	 * 
-	 * ClaveProdServ (R) - Identificador para expresar la clave del producto conforme al catálogo SAT. [c_ClaveProdServ]
+	 * ClaveProdServ (R) - Identificador para expresar la clave del producto conforme al catï¿½logo SAT. [c_ClaveProdServ]
 	 * 
-	 * ClaveUnidad (R) - Identificador para precisar la clave de unidad de medida conforme al catálogo SAT. [c_ClaveUnidad]
+	 * ClaveUnidad (R) - Identificador para precisar la clave de unidad de medida conforme al catï¿½logo SAT. [c_ClaveUnidad]
 	 * 
-	 * Descripción (R) - Descripcion del concepto.
+	 * Descripciï¿½n (R) - Descripcion del concepto.
 	 * 
 	 * Importe (R) - Importe del concepto.
 	 * 
@@ -280,11 +309,11 @@ public class FelWSClient extends ClienteServicio {
 	 *
 	 *  -Importe (R) - Importe del impuesto.
 	 *
-	 *  -Impuesto	(R) - Clave del catálogo para declarar el impuesto. [c_Impuesto]
+	 *  -Impuesto	(R) - Clave del catï¿½logo para declarar el impuesto. [c_Impuesto]
 	 *
-	 *  -TasaOCuota (R) - Tasa referenciada al catálogo que indica el SAT. [c_TasaOCuota]
+	 *  -TasaOCuota (R) - Tasa referenciada al catï¿½logo que indica el SAT. [c_TasaOCuota]
 	 *
-	 *  -TipoFactor (R) - Atributo condicional para señalar el valor de la tasa. [c_TipoFactor]
+	 *  -TipoFactor (R) - Atributo condicional para seï¿½alar el valor de la tasa. [c_TipoFactor]
 	 *
 	 * R: Requerido
 	 * O: Opcional
@@ -428,6 +457,207 @@ public class FelWSClient extends ClienteServicio {
 		pagos.setVersion("1.0");
 		
 		return pagos;
+	}
+	
+	public Nomina12R[] llenarNomina(Nomina nom, String regPat) {
+		Nomina12R nomina = new Nomina12R();
+		nomina.setTipoNomina(nom.getTipoNomina());
+		nomina.setFechaPago(nom.getEmpleado().getFechaPago());
+		nomina.setFechaInicialPago(nom.getEmpleado().getFechaIniPago());
+		nomina.setFechaFinalPago(nom.getEmpleado().getFechaFinPago());
+		nomina.setNumDiasPagados(new BigDecimal(nom.getEmpleado().getNumDiasPagados()));
+		
+		EmisorNomina12R emisor = new EmisorNomina12R();
+		emisor.setRegistroPatronal(regPat);
+		nomina.setEmisorNomina12R(emisor);
+		
+		ReceptorNomina12R receptor = new ReceptorNomina12R();
+		receptor.setCURP(nom.getEmpleado().getCurp());
+		receptor.setNumSeguridadSocial(nom.getEmpleado().getNss());
+		receptor.setFechaInicioRelLaboral(nom.getEmpleado().getFechaInicioRelLaboral());
+		receptor.setAntiguedad(nom.getEmpleado().getAntiguedad());
+		receptor.setTipoContrato(nom.getEmpleado().getTipoContrato());
+		if ("S".equalsIgnoreCase(nom.getEmpleado().getSindicalizado())) {
+			receptor.setSindicalizado("SI");
+		}
+		receptor.setTipoJornada(nom.getEmpleado().getTipoJornada());
+		receptor.setTipoRegimen(nom.getEmpleado().getRegimen());
+		receptor.setNumEmpleado(nom.getEmpleado().getNumEmp());
+		receptor.setDepartamento(nom.getEmpleado().getDepartamento());
+		receptor.setPuesto(nom.getEmpleado().getPuesto());
+		receptor.setRiesgoPuesto(nom.getEmpleado().getRiesgoPuesto());
+		receptor.setPeriodicidadPago(nom.getEmpleado().getPeriodicidad());
+		receptor.setBanco(nom.getEmpleado().getBanco());
+		receptor.setCuentaBancaria(nom.getEmpleado().getCuentaBancaria());
+		receptor.setSalarioBaseCotApor(new BigDecimal(nom.getEmpleado().getSalarioBase()).setScale(2, RoundingMode.HALF_UP));
+		receptor.setSalarioDiarioIntegrado(new BigDecimal(nom.getEmpleado().getSalarioDiarioIntegrado()).setScale(2, RoundingMode.HALF_UP));
+		receptor.setClaveEntFed(nom.getEmpleado().getDireccion().getEstado().getClave());
+		nomina.setReceptorNomina12R(receptor);
+		
+		// Percepciones
+		if ((nom.getPercepciones() != null) && !nom.getPercepciones().isEmpty()) {
+			nomina.setTotalPercepciones(new BigDecimal(nom.getTotalPercepciones()).setScale(2, RoundingMode.HALF_UP));
+			PercepcionesNomina12R percepciones = new PercepcionesNomina12R();
+			percepciones.setTotalSueldos(new BigDecimal(nom.getTotalSueldos()).setScale(2, RoundingMode.HALF_UP));
+			percepciones.setTotalGravado(new BigDecimal(nom.getTotalGravadoPercepcion()).setScale(2, RoundingMode.HALF_UP));
+			percepciones.setTotalExento(new BigDecimal(nom.getTotalExcentoPercepcion()).setScale(2, RoundingMode.HALF_UP));
+			
+			boolean separacionIndemnizacion = false;
+			boolean jubilacionPensionRetiro = false;
+			Percepcion12R percepcionHE = null;
+			ArrayList<Percepcion12R> lstPercepciones = new ArrayList<Percepcion12R>();
+			for (Percepcion p : nom.getPercepciones()) {
+				if (p.getTipoPercepcion() == TipoPercepcion._019) {
+					if (percepcionHE == null) {
+						percepcionHE = new Percepcion12R();
+						percepcionHE.setTipoPercepcion(TipoPercepcion._019.getClave());
+						percepcionHE.setClave(p.getClave());
+						percepcionHE.setConcepto(p.getConcepto());
+						percepcionHE.setImporteGravado(new BigDecimal(p.getImporteGravado()).setScale(2, 4));
+						percepcionHE.setImporteExento(new BigDecimal(p.getImporteExento()).setScale(2, 4));
+						lstPercepciones.add(percepcionHE);
+						ArrayList<HorasExtra12R> lstHE = new ArrayList<HorasExtra12R>();
+						for (HoraExtra he : nom.getHorasExtra()) {
+							HorasExtra12R her = new HorasExtra12R();
+							her.setDias(he.getDias());
+							her.setHorasExtra(he.getHoras());
+							her.setImportePagado(new BigDecimal(he.getImportePagado()).setScale(2, 4));
+							her.setTipoHoras(he.getTipo());
+							lstHE.add(her);
+						}
+						percepcionHE.setHorasExtra(lstHE.toArray(new HorasExtra12R[lstHE.size()]));
+					} else {
+						percepcionHE.setImporteGravado(percepcionHE.getImporteGravado().add(new BigDecimal(p.getImporteGravado()).setScale(2, 4)));
+						percepcionHE.setImporteExento(percepcionHE.getImporteExento().add(new BigDecimal(p.getImporteExento()).setScale(2, 4)));
+					}
+					
+				} else {
+					Percepcion12R percepcion = new Percepcion12R();
+					percepcion.setTipoPercepcion(StringUtils.leftPad((String)p.getTipoPercepcion().getClave(), 3, "0"));
+					percepcion.setClave(p.getClave());
+					percepcion.setConcepto(p.getConcepto());
+					percepcion.setImporteGravado(new BigDecimal(p.getImporteGravado()).setScale(2, 4));
+					percepcion.setImporteExento(new BigDecimal(p.getImporteExento()).setScale(2, 4));
+					lstPercepciones.add(percepcion);
+				
+					if ("022".equals(percepcion.getTipoPercepcion()) ||
+						"023".equals(percepcion.getTipoPercepcion()) || 
+						"025".equals(percepcion.getTipoPercepcion())) {
+						separacionIndemnizacion = true;
+					}
+					if ("039".equals(percepcion.getTipoPercepcion()) ||
+						"044".equals(percepcion.getTipoPercepcion())) {
+						jubilacionPensionRetiro = true;
+					}
+				}
+			}
+			
+			if (separacionIndemnizacion) {
+				percepciones.setTotalSeparacionIndemnizacion(new BigDecimal(nom.getTotalSeparacionIndemnizacion()).setScale(2, RoundingMode.HALF_UP));
+			}
+			if (jubilacionPensionRetiro) {
+				percepciones.setTotalJubilacionPensionRetiro(new BigDecimal(nom.getTotalJubilacionPensionRetiro()).setScale(2, RoundingMode.HALF_UP));
+			}
+			
+			percepciones.setListaPercepciones(lstPercepciones.toArray(new Percepcion12R[lstPercepciones.size()]));
+			nomina.setPercepcionesNomina12R(percepciones);
+		}
+		
+		// Jubilacion Pension Retiro
+		if (nom.getPercepcionJubilacionPensionRetiro() != null) {
+			PercepcionesNomina12R percepciones = nomina.getPercepcionesNomina12R() != null ? nomina.getPercepcionesNomina12R() : new PercepcionesNomina12R();
+			JubilacionPensionRetiroR jubilacionPensionRetiro = new JubilacionPensionRetiroR();
+			jubilacionPensionRetiro.setIngresoAcumulable(new BigDecimal(nom.getPercepcionJubilacionPensionRetiro().getIngresoAcumulable()).setScale(2, RoundingMode.HALF_UP));
+			jubilacionPensionRetiro.setIngresoNoAcumulable(new BigDecimal(nom.getPercepcionJubilacionPensionRetiro().getIngresoNoAcumulable()).setScale(2, RoundingMode.HALF_UP));
+			jubilacionPensionRetiro.setMontoDiario(new BigDecimal(nom.getPercepcionJubilacionPensionRetiro().getMontoDiario()).setScale(2, RoundingMode.HALF_UP));
+			jubilacionPensionRetiro.setTotalParcialidad(new BigDecimal(nom.getPercepcionJubilacionPensionRetiro().getTotalParcialidad()).setScale(2, RoundingMode.HALF_UP));
+			jubilacionPensionRetiro.setTotalUnaExhibicion(new BigDecimal(nom.getPercepcionJubilacionPensionRetiro().getTotalUnaExhibicion()).setScale(2, RoundingMode.HALF_UP));
+			percepciones.setJubilacionPensionRetiroR(jubilacionPensionRetiro);
+		}
+				
+		// Separacion Indemnizacion
+		if (nom.getPercepcionSeparacionIndemnizacion() != null) {
+			PercepcionesNomina12R percepciones = nomina.getPercepcionesNomina12R() != null ? nomina.getPercepcionesNomina12R() : new PercepcionesNomina12R();
+			SeparacionIndemnizacionR separacionIndemnizacion = new SeparacionIndemnizacionR();
+			separacionIndemnizacion.setIngresoAcumulable(new BigDecimal(nom.getPercepcionSeparacionIndemnizacion().getIngresoAcumulable()).setScale(2, RoundingMode.HALF_UP));
+			separacionIndemnizacion.setIngresoNoAcumulable(new BigDecimal(nom.getPercepcionSeparacionIndemnizacion().getIngresoNoAcumulable()).setScale(2, RoundingMode.HALF_UP));
+			separacionIndemnizacion.setNumAÃ±osServicio(nom.getPercepcionSeparacionIndemnizacion().getNumAÃ±osServicio());
+			separacionIndemnizacion.setTotalPagado(new BigDecimal(nom.getPercepcionSeparacionIndemnizacion().getTotalPagado()).setScale(2, RoundingMode.HALF_UP));
+			separacionIndemnizacion.setUltimoSueldoMensOrd(new BigDecimal(nom.getPercepcionSeparacionIndemnizacion().getUltimoSueldoMensOrd()).setScale(2, RoundingMode.HALF_UP));
+			percepciones.setSeparacionIndemnizacionR(separacionIndemnizacion);
+		}
+		
+		// Deducciones
+		if ((nom.getDeducciones() != null) && !nom.getDeducciones().isEmpty()) {
+			nomina.setTotalDeducciones(new BigDecimal(nom.getTotalDeducciones()).setScale(2, RoundingMode.HALF_UP));
+			DeduccionesNomina12R deducciones = new DeduccionesNomina12R();
+			deducciones.setTotalOtrasDeducciones(new BigDecimal(nom.getTotalOtrasDeducciones()).setScale(2, RoundingMode.HALF_UP));
+			boolean retenciones = false;
+			ArrayList<DeduccionNomina12R> lstDeducciones = new ArrayList<DeduccionNomina12R>();
+			for (Percepcion d : nom.getDeducciones()) {
+				DeduccionNomina12R deduccion = new DeduccionNomina12R();
+				deduccion.setTipoDeduccion(StringUtils.leftPad((String)d.getTipoDeduccion().getClave(), 3, "0"));
+				deduccion.setClave(d.getClave());
+				deduccion.setConcepto(d.getConcepto());
+				deduccion.setImporte(new BigDecimal(d.getImporte()).setScale(2, RoundingMode.HALF_UP));
+				lstDeducciones.add(deduccion);
+				if (d.getTipoDeduccion() == TipoDeduccion._002) {
+					retenciones = true;
+				}
+			}
+			
+			if (retenciones) {
+				deducciones.setTotalImpuestosRetenidos(new BigDecimal(nom.getTotalImpuestosRetenidos()).setScale(2, RoundingMode.HALF_UP));
+			}
+			deducciones.setListaDeducciones(lstDeducciones.toArray(new DeduccionNomina12R[lstDeducciones.size()]));
+			nomina.setDeduccionesNomina12R(deducciones);
+		}
+		
+		// Incapacidades
+		if ((nom.getIncapacidades() != null) && !nom.getIncapacidades().isEmpty()) {
+			ArrayList<IncapacidadNomina12R> incapacidades	 = new ArrayList<IncapacidadNomina12R>();	
+			for (Incapacidad i : nom.getIncapacidades()) {
+				IncapacidadNomina12R incapacidad = new IncapacidadNomina12R();
+				incapacidad.setDiasIncapacidad(i.getDias());
+				incapacidad.setTipoIncapacidad(i.getTipo());
+				incapacidad.setImporteMonetario(new BigDecimal(i.getDescuento()).setScale(2, RoundingMode.HALF_UP));
+				incapacidades.add(incapacidad);
+			}
+			nomina.setIncapacidadesNomina(incapacidades.toArray(new IncapacidadNomina12R[incapacidades.size()]));
+		}
+		
+		// otros pagos
+		if ((nom.getOtrosPagos() != null) && !nom.getOtrosPagos().isEmpty()) {
+			ArrayList<OtroPagoNomina12R> otrosPagos = new ArrayList<OtroPagoNomina12R>();
+			for (OtroPago op : nom.getOtrosPagos()) {
+				OtroPagoNomina12R otroPago = new OtroPagoNomina12R();
+				otroPago.setTipoOtroPago(op.getTipoOtroPago());
+				otroPago.setClave(op.getClave());
+				otroPago.setConcepto(op.getConcepto());
+				otroPago.setImporte(new BigDecimal(op.getImporte()).setScale(2, RoundingMode.HALF_UP));
+						
+				if (op.getSubsidioCausado() != null) {
+					SubsidioAlEmpleoR subsidio = new SubsidioAlEmpleoR();
+					subsidio.setSubsidioCausado(new BigDecimal(op.getSubsidioCausado()).setScale(2, RoundingMode.HALF_UP));
+					otroPago.setSubsidioAlEmpleoR(subsidio);
+				}
+						
+				if (op.getCompensacion() != null) {
+					CompensacionSaldosAFavorR compensacion = new CompensacionSaldosAFavorR();
+					compensacion.setSaldoAFavor(new BigDecimal(op.getCompensacion().getSaldoAFavor()).setScale(2, RoundingMode.HALF_UP));
+					compensacion.setAÃ±o(op.getCompensacion().getAÃ±o());
+					compensacion.setRemanenteSalFav(new BigDecimal(op.getCompensacion().getRemanente()).setScale(2, RoundingMode.HALF_UP));
+					otroPago.setCompensacionSaldosAFavorR(compensacion);
+				}
+						
+				otrosPagos.add(otroPago);
+			}
+			nomina.setOtrosPagos(otrosPagos.toArray(new OtroPagoNomina12R[otrosPagos.size()]));
+		}
+		
+		Nomina12R n[] = new Nomina12R[1];
+		n[0] = nomina;
+		return n;
 	}
 	
 }
