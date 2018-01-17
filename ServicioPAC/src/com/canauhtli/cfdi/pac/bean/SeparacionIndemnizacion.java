@@ -3,7 +3,7 @@ package com.canauhtli.cfdi.pac.bean;
 public class SeparacionIndemnizacion {
 
 	private double totalPagado;
-	private int numAñosServicio;
+	private int numAÃ±osServicio;
 	private double ultimoSueldoMensOrd;
 	private double ingresoAcumulable;
 	private double ingresoNoAcumulable;
@@ -14,11 +14,11 @@ public class SeparacionIndemnizacion {
 	public void setTotalPagado(double totalPagado) {
 		this.totalPagado = totalPagado;
 	}
-	public int getNumAñosServicio() {
-		return numAñosServicio;
+	public int getNumAÃ±osServicio() {
+		return numAÃ±osServicio;
 	}
-	public void setNumAñosServicio(int numAñosServicio) {
-		this.numAñosServicio = numAñosServicio;
+	public void setNumAÃ±osServicio(int numAÃ±osServicio) {
+		this.numAÃ±osServicio = numAÃ±osServicio;
 	}
 	public double getUltimoSueldoMensOrd() {
 		return ultimoSueldoMensOrd;

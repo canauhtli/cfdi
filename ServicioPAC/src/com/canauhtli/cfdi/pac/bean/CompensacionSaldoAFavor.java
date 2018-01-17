@@ -2,7 +2,7 @@ package com.canauhtli.cfdi.pac.bean;
 
 public class CompensacionSaldoAFavor {
 	private double saldoAFavor;
-	private short año;
+	private short aÃ±o;
 	private double remanente;
 	
 	public double getSaldoAFavor() {
@@ -11,11 +11,11 @@ public class CompensacionSaldoAFavor {
 	public void setSaldoAFavor(double saldoAFavor) {
 		this.saldoAFavor = saldoAFavor;
 	}
-	public short getAño() {
-		return año;
+	public short getAÃ±o() {
+		return aÃ±o;
 	}
-	public void setAño(short año) {
-		this.año = año;
+	public void setAÃ±o(short aÃ±o) {
+		this.aÃ±o = aÃ±o;
 	}
 	public double getRemanente() {
 		return remanente;
@@ -27,7 +27,7 @@ public class CompensacionSaldoAFavor {
 	public String toString() {
 		StringBuilder sb = new StringBuilder("CompensacionSaldoAFavor=[");
 		sb.append("saldoAFavor=").append(saldoAFavor)
-		  .append(", año=").append(año)
+		  .append(", aÃ±o=").append(aÃ±o)
 		  .append(", remanente=").append(remanente)
 		  .append("]");
 		return sb.toString();
